@@ -1,0 +1,60 @@
+
+page-login {
+    .item-input-has-fucus{
+        .label-md{
+            color:$black;
+        }
+    }
+    .input-has-focus{
+        .label-md{
+            color:$black;
+        }
+    }
+.item-block{
+    border:1px solid $black;
+    margin-bottom:5px;
+    color:$black;
+}
+    background:$bg-yellow;
+    input{
+        margin-buttom:10px;
+    }
+
+    button{
+        ion-icon{
+            position: absolute;
+            left:5px;
+            font-size: 48px;
+        }
+    }
+
+    .app-logo{
+        text-align: center;
+        margin-bottom:10px;
+        img{
+            border-radius: 50%;
+            overflow: hidden;
+            background: $black;
+            margin:auto;
+            padding:2px;
+        }
+    }
+    .btn-social{
+        button{
+            padding:4px;
+            min-height: 42px;
+        }
+    }
+    .grid{
+        padding:0px;
+        .row{
+            padding:10px 0;
+            .padding-left-0{
+                padding-left:0px;
+            }
+            .padding-right-0{
+                padding-right:0px;
+            }
+        }
+    }
+}

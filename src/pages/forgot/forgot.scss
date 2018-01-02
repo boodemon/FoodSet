@@ -1,0 +1,24 @@
+page-forgot {
+    .btn-send{
+    .button-md{
+        background:$yellow;
+        color:$black;
+        border:1px solid $black;
+    }
+    .button-md:hover:not(.disable-hover){
+        background:$black;
+        color:$white;
+    }
+}
+}
+.toolbar-background-md{
+        background:$black;
+        color:$white;
+}
+.toolbar-title-md,
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default{
+    color:$white;
+}
+.bar-button-default-md:hover:not(.disable-hover), .bar-button-clear-md-default:hover:not(.disable-hover), .bar-button-md-default:hover:not(.disable-hover){
+    color:$yellow;
+}
