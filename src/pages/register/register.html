@@ -15,6 +15,24 @@
 
 <ion-content padding>
     <ion-list>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                    <ion-item>
+                            <ion-label floating>Firstname</ion-label>
+                            <ion-input type="text"></ion-input>
+                            <span class="err-confirm"></span>
+                        </ion-item>
+                            </ion-col>
+            <ion-col>
+                    <ion-item>
+                            <ion-label floating>Lastname</ion-label>
+                            <ion-input type="text"></ion-input>
+                            <span class="err-confirm"></span>
+                        </ion-item>
+                            </ion-col>
+        </ion-row>
+    </ion-grid>
         <ion-item>
             <ion-label floating>Username</ion-label>
             <ion-input type="text"></ion-input>
@@ -36,17 +54,12 @@
             <span class="err-confirm"></span>
         </ion-item>
         <ion-item>
-            <ion-label floating>Name</ion-label>
-            <ion-input type="text"></ion-input>
-            <span class="err-confirm"></span>
-        </ion-item>
-        <ion-item>
             <ion-label floating>Tel</ion-label>
             <ion-input type="text"></ion-input>
             <span class="err-confirm"></span>
         </ion-item>
-        <div class="btn-send">
-            <button ion-button full (click)="postForgot()"> Send Password</button>
+        <div class="btn-reg">
+            <button ion-button full (click)="postRegister()"> Register</button>
         </div>
           </ion-list>
     

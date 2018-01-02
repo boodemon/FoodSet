@@ -25816,3 +25816,19 @@ page-register .btn-send .button-md:hover:not(.disable-hover) {
   background: #010101;
   color: #fff;
 }
+
+page-register .label-md[floating] {
+  color: #010101;
+}
+
+page-register .item-input-has-focus .label-md[floating] {
+  color: #010101;
+}
+
+page-register .item-md {
+  background: transparent;
+}
+
+page-register .item-input {
+  display: block;
+}

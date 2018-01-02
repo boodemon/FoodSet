@@ -89,7 +89,7 @@ var RegisterPage = (function () {
     };
     RegisterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-register',template:/*ion-inline-start:"E:\Outsource\2017\Tigerwealth\t-mobile\src\pages\register\register.html"*/'<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Register</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-list>\n        <ion-item>\n            <ion-label floating>Username</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-username"></span>\n        </ion-item>\n        <ion-item>\n            <ion-label floating>E-mail</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-email"></span>\n        </ion-item>\n        <ion-item>\n            <ion-label floating>Password</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-password"></span>\n        </ion-item>\n        <ion-item>\n            <ion-label floating>Confirm Password</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-confirm"></span>\n        </ion-item>\n        <ion-item>\n            <ion-label floating>Name</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-confirm"></span>\n        </ion-item>\n        <ion-item>\n            <ion-label floating>Tel</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-confirm"></span>\n        </ion-item>\n        <div class="btn-send">\n            <button ion-button full (click)="postForgot()"> Send Password</button>\n        </div>\n          </ion-list>\n    \n</ion-content>\n'/*ion-inline-end:"E:\Outsource\2017\Tigerwealth\t-mobile\src\pages\register\register.html"*/,
+            selector: 'page-register',template:/*ion-inline-start:"E:\Outsource\2017\Tigerwealth\t-mobile\src\pages\register\register.html"*/'<!--\n  Generated template for the RegisterPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Register</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-list>\n    <ion-grid>\n        <ion-row>\n            <ion-col>\n                    <ion-item>\n                            <ion-label floating>Firstname</ion-label>\n                            <ion-input type="text"></ion-input>\n                            <span class="err-confirm"></span>\n                        </ion-item>\n                            </ion-col>\n            <ion-col>\n                    <ion-item>\n                            <ion-label floating>Lastname</ion-label>\n                            <ion-input type="text"></ion-input>\n                            <span class="err-confirm"></span>\n                        </ion-item>\n                            </ion-col>\n        </ion-row>\n    </ion-grid>\n        <ion-item>\n            <ion-label floating>Username</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-username"></span>\n        </ion-item>\n        <ion-item>\n            <ion-label floating>E-mail</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-email"></span>\n        </ion-item>\n        <ion-item>\n            <ion-label floating>Password</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-password"></span>\n        </ion-item>\n        <ion-item>\n            <ion-label floating>Confirm Password</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-confirm"></span>\n        </ion-item>\n        <ion-item>\n            <ion-label floating>Tel</ion-label>\n            <ion-input type="text"></ion-input>\n            <span class="err-confirm"></span>\n        </ion-item>\n        <div class="btn-reg">\n            <button ion-button full (click)="postRegister()"> Register</button>\n        </div>\n          </ion-list>\n    \n</ion-content>\n'/*ion-inline-end:"E:\Outsource\2017\Tigerwealth\t-mobile\src\pages\register\register.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
     ], RegisterPage);
@@ -122,11 +122,11 @@ webpackEmptyAsyncContext.id = 112;
 
 var map = {
 	"../pages/dashboard/dashboard.module": [
-		274,
+		275,
 		0
 	],
 	"../pages/forgot/forgot.module": [
-		275,
+		274,
 		3
 	],
 	"../pages/login/login.module": [
@@ -215,8 +215,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */], {}, {
                     links: [
-                        { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'DashboardPage', segment: 'dashboard', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'DashboardPage', segment: 'dashboard', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/register/register.module#RegisterPageModule', name: 'RegisterPage', segment: 'register', priority: 'low', defaultHistory: [] }
                     ]

@@ -1,0 +1,27 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+    }
+  },
+  "dependent_plugins": {}
+}

@@ -10,4 +10,19 @@ page-register {
             color:$white;
         }
     }
+    .label-md[floating]{
+        color:$black;
+    }
+    .item-input-has-focus{
+        .label-md[floating]{
+            color:$black;
+        }
+    }
+    .item-md{
+        background:transparent;
+    }
+    .item-input{
+        display: block;
+    }
 }
+
