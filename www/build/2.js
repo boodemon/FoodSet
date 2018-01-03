@@ -21,6 +21,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var LoginPageModule = (function () {
     function LoginPageModule() {
     }
+    LoginPageModule.prototype.loginFacebook = function () {
+        alert('login');
+    };
     LoginPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [

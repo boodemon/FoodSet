@@ -21,6 +21,11 @@
     },
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "foodorder.tigerwealth.com"
+    },
+    "cordova-plugin-facebook4": {
+      "APP_ID": "2018552691718690",
+      "APP_NAME": "TigerwealthOrderFood",
+      "PACKAGE_NAME": "foodorder.tigerwealth.com"
     }
   },
   "dependent_plugins": {}

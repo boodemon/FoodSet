@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Facebook, FacebookLoginResponse} from '@ionic-native/facebook';
 
 import { ForgotPage } from '../forgot/forgot';
 import { RegisterPage } from '../register/register';
@@ -17,8 +18,8 @@ import { RegisterPage } from '../register/register';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  private resp:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fb:Facebook) {
   }
 
   ionViewDidLoad() {
@@ -29,6 +30,14 @@ export class LoginPage {
   }
   goToRegister(){
     this.navCtrl.push(RegisterPage);
+  }
+  loginFacebook(){
+    this.fb.login(['public_profile', 'user_friends', 'email'])
+    .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
+    .catch(e => console.log('Error logging into Facebook', e));
+  
+  
+    //this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
   }
 
 }
