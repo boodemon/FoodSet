@@ -18,8 +18,12 @@ import { RegisterPage } from '../register/register';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  private resp:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fb:Facebook) {
+  userData:any;
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private facebook:Facebook
+  ) {
   }
 
   ionViewDidLoad() {
@@ -32,12 +36,11 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
   loginFacebook(){
-    this.fb.login(['public_profile', 'user_friends', 'email'])
-    .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
-    .catch(e => console.log('Error logging into Facebook', e));
-  
-  
-    //this.fb.logEvent(this.fb.EVENTS.EVENT_NAME_ADDED_TO_CART);
+    this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
+      this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
+        this.userData = {email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name']}
+      });
+    });
   }
 
 }
