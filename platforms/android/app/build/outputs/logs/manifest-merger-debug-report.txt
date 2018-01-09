@@ -90,7 +90,7 @@ MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Wasantasiri\.gradle\
 		ADDED from D:\Outsource\2017\Tigerwealth\t-mobile\platforms\android\app\src\main\AndroidManifest.xml:5:18-52
 	android:icon
 		ADDED from D:\Outsource\2017\Tigerwealth\t-mobile\platforms\android\app\src\main\AndroidManifest.xml:5:53-80
-activity#foodorder.tigerwealth.com.MainActivity
+activity#com.foodorder.tigerwealth.MainActivity
 ADDED from D:\Outsource\2017\Tigerwealth\t-mobile\platforms\android\app\src\main\AndroidManifest.xml:6:9-11:20
 	android:label
 		ADDED from D:\Outsource\2017\Tigerwealth\t-mobile\platforms\android\app\src\main\AndroidManifest.xml:6:97-134

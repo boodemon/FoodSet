@@ -528,6 +528,8 @@
     <string name="com_facebook_smart_login_confirmation_continue_as">Continue as <ns1:g id="user name">%1$s</ns1:g></string>
     <string name="com_facebook_smart_login_confirmation_title">Confirm Login</string>
     <string name="com_facebook_tooltip_default">You\'re in control - choose what info you want to share with apps.</string>
+    <string name="fb_app_id">2018552691718690</string>
+    <string name="fb_app_name">TigerwealthOrderFood</string>
     <string name="launcher_name">@string/app_name</string>
     <string name="messenger_send_button_text">Send</string>
     <string name="search_menu_title">Search</string>

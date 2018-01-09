@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="foodorder.tigerwealth.com"
+    package="com.foodorder.tigerwealth"
     android:hardwareAccelerated="true"
     android:versionCode="1"
     android:versionName="0.0.1" >
@@ -26,7 +26,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true" >
         <activity
-            android:name="foodorder.tigerwealth.com.MainActivity"
+            android:name="com.foodorder.tigerwealth.MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale"
             android:label="@string/activity_name"
             android:launchMode="singleTop"
@@ -63,7 +63,7 @@
         -->
         <provider
             android:name="com.facebook.internal.FacebookInitProvider"
-            android:authorities="foodorder.tigerwealth.com.FacebookInitProvider"
+            android:authorities="com.foodorder.tigerwealth.FacebookInitProvider"
             android:exported="false" />
 
         <meta-data

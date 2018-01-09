@@ -8,24 +8,24 @@
   },
   "installed_plugins": {
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+      "PACKAGE_NAME": "com.foodorder.tigerwealth"
     },
     "cordova-plugin-facebook4": {
       "APP_ID": "2018552691718690",
       "APP_NAME": "TigerwealthOrderFood",
-      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+      "PACKAGE_NAME": "com.foodorder.tigerwealth"
     },
     "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+      "PACKAGE_NAME": "com.foodorder.tigerwealth"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+      "PACKAGE_NAME": "com.foodorder.tigerwealth"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+      "PACKAGE_NAME": "com.foodorder.tigerwealth"
     },
     "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "foodorder.tigerwealth.com"
+      "PACKAGE_NAME": "com.foodorder.tigerwealth"
     }
   },
   "dependent_plugins": {}
