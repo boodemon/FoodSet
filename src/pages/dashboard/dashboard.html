@@ -6,13 +6,34 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>dashboard</ion-title>
+  <ion-navbar hideBackButton>
+    <ion-title>DASHBOARD</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <h5>DASHBOARD ORDER</h5>
+  <hr/>
+  <ion-grid>
+    <ion-row class="food-panel">
+      <ion-col col-6 class="food-create" (click)="goCreate()">
+        <img src="assets/imgs/food-serb-2.svg" /> 
+        <span>CREATE ORDER</span>
+      </ion-col>
+      <ion-col col-6 class="food-tracking" (click)="goTrack()" >
+        <img src="assets/imgs/food-delivery.svg" />
+        <span>ORDER TRACKING</span>
+      </ion-col> 
+      <ion-col col-6 class="food-history" (click)="goHistory()">
+        <img src="assets/imgs/food-history.svg" />
+        <span>ORDER HISTORY</span>
+      </ion-col>
+      <ion-col col-6 class="food-profile" (click)="goProfile()">
+        <img src="assets/imgs/food-profile.svg" />
+        <span>PROFILE</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

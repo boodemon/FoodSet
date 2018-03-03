@@ -27,11 +27,17 @@ page-login {
             font-size: 48px;
         }
     }
-
+    .new-member{
+        cursor: pointer;
+    }
+    .forgot{
+        cursor: pointer;
+    }
     .app-logo{
         text-align: center;
         margin-bottom:10px;
         img{
+            max-width: 50%;
             border-radius: 50%;
             overflow: hidden;
             background: $black;

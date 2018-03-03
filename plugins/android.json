@@ -7,6 +7,9 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "com.foodorder.tigerwealth"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.foodorder.tigerwealth"
     },
@@ -26,7 +29,14 @@
     },
     "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "com.foodorder.tigerwealth"
+    },
+    "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "com.foodorder.tigerwealth"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.foodorder.tigerwealth"
+    }
+  }
 }

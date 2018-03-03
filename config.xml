@@ -89,5 +89,7 @@
         <variable name="APP_ID" value="2018552691718690" />
         <variable name="APP_NAME" value="TigerwealthOrderFood" />
     </plugin>
+    <plugin name="cordova-plugin-advanced-http" spec="^1.9.1" />
     <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-nativestorage" spec="^2.3.0" />
 </widget>

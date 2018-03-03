@@ -15,52 +15,42 @@
 
 <ion-content padding>
     <ion-list>
-    <ion-grid>
-        <ion-row>
-            <ion-col>
-                    <ion-item>
-                            <ion-label floating>Firstname</ion-label>
-                            <ion-input type="text"></ion-input>
-                            <span class="err-confirm"></span>
-                        </ion-item>
-                            </ion-col>
-            <ion-col>
-                    <ion-item>
-                            <ion-label floating>Lastname</ion-label>
-                            <ion-input type="text"></ion-input>
-                            <span class="err-confirm"></span>
-                        </ion-item>
-                            </ion-col>
-        </ion-row>
-    </ion-grid>
+        <form (ngSubmit)="postRegister()">
+
         <ion-item>
-            <ion-label floating>Username</ion-label>
-            <ion-input type="text"></ion-input>
-            <span class="err-username"></span>
+            <ion-label stacked>Name</ion-label>
+            <ion-input type="text" name="name" [ngClass]="{'err-focus':errs.name !==''}" [(ngModel)]="reg.name"></ion-input>
         </ion-item>
+        <p *ngIf="errs.name !== ''" class="err">{{ errs.name }}</p>
         <ion-item>
-            <ion-label floating>E-mail</ion-label>
-            <ion-input type="text"></ion-input>
-            <span class="err-email"></span>
+            <ion-label stacked>Username</ion-label>
+            <ion-input type="text" name="username" [ngClass]="{'err-focus':errs.username !==''}"[(ngModel)]="reg.username"></ion-input>
         </ion-item>
+        <p *ngIf="errs.username !== ''" class="err">{{ errs.username }}</p>
         <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="text"></ion-input>
-            <span class="err-password"></span>
+            <ion-label stacked>E-mail</ion-label>
+            <ion-input type="text" name="email" [ngClass]="{'err-focus':errs.email !==''}"[(ngModel)]="reg.email"></ion-input>
         </ion-item>
+        <p *ngIf="errs.email !== ''" class="err">{{ errs.email }}</p>
         <ion-item>
-            <ion-label floating>Confirm Password</ion-label>
-            <ion-input type="text"></ion-input>
-            <span class="err-confirm"></span>
+            <ion-label stacked>Password</ion-label>
+            <ion-input type="password" name="password" [ngClass]="{'err-focus':errs.password !==''}"[(ngModel)]="reg.password"></ion-input>
         </ion-item>
+        <p *ngIf="errs.password !== ''" class="err">{{ errs.password }}</p>
         <ion-item>
-            <ion-label floating>Tel</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-label stacked>Confirm Password</ion-label>
+            <ion-input type="password" name="confirm_password" [ngClass]="{'err-focus':errs.confirm_password !==''}" [(ngModel)]="reg.confirm_password"></ion-input>
+        </ion-item>
+        <p *ngIf="errs.confirm_password !== ''" class="err">{{ errs.confirm_password }}</p>
+        <ion-item>
+            <ion-label stacked>Tel</ion-label>
+            <ion-input type="text" name="tel" [(ngModel)]="reg.tel"></ion-input>
             <span class="err-confirm"></span>
         </ion-item>
         <div class="btn-reg">
-            <button ion-button full (click)="postRegister()"> Register</button>
+            <button ion-button full type="submit"> Register</button>
         </div>
-          </ion-list>
+        </form>
+    </ion-list>
     
 </ion-content>

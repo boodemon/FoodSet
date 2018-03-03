@@ -1,3 +1,25 @@
 page-dashboard {
-
+    .food-panel{
+        ion-col{
+            min-height: 120px;
+            img{
+                width: 100%;
+                position: relative;
+                z-index: 1;
+            }
+            span{
+                text-align: center;
+                width:100%;
+                position: relative;
+                z-index: 2;
+                display: block;
+                font-weight: bold;
+                color:$white;
+            }
+            background:$black;
+            border:1px $yellow solid;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    }
 }

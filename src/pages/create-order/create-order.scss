@@ -1,0 +1,14 @@
+page-create-order {
+    .item-md{
+        padding:0;
+        border: 0;
+        background:transparent;
+        
+    }
+    .item-md.item-block{
+        .item-inner{
+            padding-right:0;
+            border-bottom:0;
+        } 
+    }
+}
