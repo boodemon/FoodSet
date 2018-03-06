@@ -61,4 +61,8 @@ export class AuthProvider {
     alert.present();
   }
 
+  logout(){
+    localStorage.removeItem('token');
+  }
+
 }

@@ -48,7 +48,7 @@ export class LoginPage {
         let code = response['code'];
         if( code == 200 ){
           localStorage.setItem('token',response['auth']);
-          this.navCtrl.push( DashboardPage );
+          this.navCtrl.setRoot( DashboardPage );
         }else{ 
           let alert = this.alertCtrl.create({
             title: 'Error',

@@ -34,14 +34,14 @@
         <p *ngIf="errs.email !== ''" class="err">{{ errs.email }}</p>
         <ion-item>
             <ion-label stacked>Password</ion-label>
-            <ion-input type="password" name="password" [ngClass]="{'err-focus':errs.password !==''}"[(ngModel)]="reg.password"></ion-input>
+            <ion-input type="password" name="password" [ngClass]="{'err-focus':errs.password !==''}" [(ngModel)]="reg.password"></ion-input>
         </ion-item>
         <p *ngIf="errs.password !== ''" class="err">{{ errs.password }}</p>
         <ion-item>
             <ion-label stacked>Confirm Password</ion-label>
-            <ion-input type="password" name="confirm_password" [ngClass]="{'err-focus':errs.confirm_password !==''}" [(ngModel)]="reg.confirm_password"></ion-input>
+            <ion-input type="password" name="password_confirmation" [ngClass]="{'err-focus':errs.password_confirmation !==''}" [(ngModel)]="reg.password_confirmation"></ion-input>
         </ion-item>
-        <p *ngIf="errs.confirm_password !== ''" class="err">{{ errs.confirm_password }}</p>
+        <p *ngIf="errs.password_confirmation !== ''" class="err">{{ errs.password_confirmation }}</p>
         <ion-item>
             <ion-label stacked>Tel</ion-label>
             <ion-input type="text" name="tel" [(ngModel)]="reg.tel"></ion-input>
