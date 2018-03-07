@@ -21,6 +21,9 @@
     "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "com.foodorder.tigerwealth"
     },
+    "cordova-plugin-nativestorage": {
+      "PACKAGE_NAME": "com.foodorder.tigerwealth"
+    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.foodorder.tigerwealth"
     },
@@ -28,9 +31,6 @@
       "PACKAGE_NAME": "com.foodorder.tigerwealth"
     },
     "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "com.foodorder.tigerwealth"
-    },
-    "cordova-plugin-nativestorage": {
       "PACKAGE_NAME": "com.foodorder.tigerwealth"
     }
   },

@@ -25775,6 +25775,14 @@ page-dashboard .food-panel ion-col span {
   color: #fff;
 }
 
+page-dashboard .food-panel .grid {
+  padding: 0;
+}
+
+page-dashboard hr {
+  margin: 0;
+}
+
 page-forgot .btn-send .button-md {
   background: #f8b318;
   color: #010101;

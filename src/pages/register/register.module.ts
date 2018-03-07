@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { RegisterPage } from './register';
-import { HTTP } from '@ionic-native/http';
-
+import { HttpClientModule} from '@angular/common/http';
 import { AuthProvider } from '../../providers/auth/auth';
 
 @NgModule({
@@ -11,7 +10,7 @@ import { AuthProvider } from '../../providers/auth/auth';
   ],
   imports: [
     IonicPageModule.forChild(RegisterPage),
-    HTTP
+    HttpClientModule
   ],
   providers:[
     AuthProvider
