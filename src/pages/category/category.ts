@@ -39,15 +39,11 @@ export class CategoryPage {
   });
 
   getCategory(){
-    this.preload.present();
     this.http.get( this.auth.api() + '/category?token=' + this.auth.token() ).subscribe((data) => {
-      console.log( data );
       this.img_path = data['img_path'];
-      this.rows = data['data'].data;
+      this.rows = data['data'];
       console.log('data rows ', this.rows );
-      this.preload.dismiss();
     },err =>{
-      this.preload.dismiss();
     })
   }
 

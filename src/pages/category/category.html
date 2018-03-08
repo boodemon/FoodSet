@@ -15,7 +15,7 @@
 
 <ion-content>
   <ion-card *ngFor="let row of rows" (click)="goFood( row.id )">
-    <img src="{{ img_path + row.image }}" />
+    <img src="{{ row.image }}" />
     <div class="card-title">{{ row.name }}</div>
   </ion-card>
 </ion-content>

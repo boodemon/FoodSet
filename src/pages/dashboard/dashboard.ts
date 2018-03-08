@@ -5,6 +5,7 @@ import { HistoryPage } from '../../pages/history/history';
 import { TrackPage } from '../track/track';
 import { ProfilePage } from '../profile/profile';
 import { AuthProvider } from '../../providers/auth/auth';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the DashboardPage page.
@@ -28,7 +29,7 @@ export class DashboardPage {
     console.log('ionViewDidLoad DashboardPage');
   }
   goCreate(){
-    this.navCtrl.push(CreateOrderPage);
+    this.navCtrl.setRoot(CreateOrderPage);
   }
 
   goHistory(){
@@ -41,6 +42,15 @@ export class DashboardPage {
   
   goProfile(){
     this.navCtrl.push( ProfilePage );
+  }
+  
+  goAbout(){
+    this.navCtrl.push( ProfilePage );
+  }
+  
+  goLogout(){
+    this.auth.logout();
+    this.navCtrl.setRoot( LoginPage );
   }
 
 }

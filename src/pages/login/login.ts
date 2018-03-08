@@ -44,15 +44,16 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
   doLogin(){
-    this.http.post(this.api + '/auth0/login',this.user ).subscribe((response) => {
+
+    this.http.post(this.api + '/auth0/login', this.user ).subscribe((response) => {
         let code = response['code'];
         if( code == 200 ){
           localStorage.setItem('token',response['auth']);
-          this.navCtrl.push( DashboardPage );
+          this.navCtrl.setRoot( DashboardPage );
         }else{ 
           let alert = this.alertCtrl.create({
             title: 'Error',
-            subTitle: 'Username or Password not match. Please try again',
+            subTitle: response['message'],
             buttons: ['OK']
           });
           alert.present();
@@ -60,6 +61,12 @@ export class LoginPage {
         console.log('response ', response );
       },
       err =>{
+        let alert = this.alertCtrl.create({
+            title: 'Error',
+            subTitle: err.message,
+            buttons: ['OK']
+        });
+        alert.present();
         console.log('err ', err );
       });
   }

@@ -5,8 +5,10 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar hideBackButton>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>DASHBOARD</ion-title>
   </ion-navbar>
 
@@ -33,6 +35,14 @@
       <ion-col col-6 class="food-profile" (click)="goProfile()">
         <img src="assets/imgs/food-profile.svg" />
         <span>PROFILE</span>
+      </ion-col>
+      <ion-col col-6 class="food-about" (click)="goAbout()">
+        <img src="assets/imgs/food-about.svg" />
+        <span>ABOUT US</span>
+      </ion-col>
+      <ion-col col-6 class="food-logout" (click)="goLogout()">
+        <img src="assets/imgs/food-logout.svg" />
+        <span>LOGOUT</span>
       </ion-col>
     </ion-row>
   </ion-grid>

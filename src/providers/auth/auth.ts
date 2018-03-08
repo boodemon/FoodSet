@@ -21,8 +21,8 @@ export class AuthProvider {
   }
 
   api(){
-    return 'http://localhost/2017/T-API/api';
-   // return 'http://ex.saiimog.com/set-conference/api';
+    //return 'http://localhost/2017/T-API/api';
+    return 'http://ex.saiimog.com/set-conference/api';
 
   }
 
@@ -59,6 +59,10 @@ export class AuthProvider {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  logout(){
+    localStorage.removeItem('token');
   }
 
 }

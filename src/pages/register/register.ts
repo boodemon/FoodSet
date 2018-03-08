@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , LoadingController,AlertController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../../providers/auth/auth';
+import { DashboardPage } from '../dashboard/dashboard';
 //import { HttpClient } from '@angular/common/http';
 
 /**
@@ -23,14 +24,15 @@ export class RegisterPage {
         email:'',
         username:'',
         password:'',
-        confirm_password:''
+        password_confirmation :''
           };
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public loading:LoadingController,
     public auth:AuthProvider,
-    public http: HttpClient
+    public http: HttpClient,
+    public alertCtrl:AlertController
       ) {
   }
 
@@ -43,30 +45,47 @@ export class RegisterPage {
     });
 
   postRegister() {
-    this.preload.present();
     console.log('param : ', this.reg,' reg ', this.reg );
     this.auth.register(this.reg).subscribe((response) => {
-        this.preload.dismiss();
-        
+      console.log( 'result : ', response );
+      let code = response['code'];
+      if (code == 200) {
+        let alert = this.alertCtrl.create({
+          title: 'Success ful',
+          subTitle: 'ทำการลงทะเบียนเรียบร้อยแล้ว',
+          buttons: ['OK']
+        });
+        alert.present();
+        this.login( this.reg.username, this.reg.password );
+
+      }
     },
     err => {
       console.log('error is ', JSON.stringify(err),':',err );
       if (err.status == 422){
         let valid = err.error;
         console.log('err email ', valid);
-        if( valid.name )
+        if( valid.name ){
           this.errs.name = valid.name[0];
-
-        if( valid.username !== undefined )
+        }else{ 
+          this.errs.name = '';
+        }
+        if( valid.username !== undefined ){
           this.errs.username = valid.username[0];
-
-        if( valid.email )
+        } else {
+          this.errs.username = '';
+        }
+        if( valid.email ){
           this.errs.email = valid.email[0];
-
-        if( valid.password )
+        } else {
+          this.errs.email = '';
+        }
+        if( valid.password ){
           this.errs.password = valid.password[0];
+        } else {
+          this.errs.password = '';
+        }
         console.log('message error = ', this.errs );
-        this.preload.dismiss();
         return false;
       }
     });
@@ -76,8 +95,25 @@ export class RegisterPage {
     this.preload.present();
     this.auth.checkUser([{type:input,text: this.reg.username }]).subscribe((response) => {
       console.log('response is ', response );
-      this.preload.dismiss();
     });
+  }
+
+  login( username, password ){
+    let result = false;
+    this.http.post(this.auth.api() + '/auth0/login', {username:username,password:password}).subscribe((response) => {
+      let code = response['code'];
+      if (code == 200) {
+        localStorage.setItem('token', response['auth']);
+        result = true;
+        this.navCtrl.setRoot(DashboardPage);
+      } 
+      console.log('response ', response);
+    },
+      err => {
+        console.log('err ', err);
+      });
+    if( result )
+    this.navCtrl.setRoot(DashboardPage);
   }
 
 }

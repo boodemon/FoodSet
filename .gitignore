@@ -1,0 +1,8 @@
+<<<<<<< HEAD
+/platforms/**
+/node_modules/**
+/www/**
+=======
+/node_mudules/*
+/platforms/*
+>>>>>>> 3dee4e24759562cac634343a8882b04f029879ba
