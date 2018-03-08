@@ -20,6 +20,7 @@ import { TrackPageModule } from '../pages/track/track.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { CategoryPageModule } from '../pages/category/category.module';
 import { FoodPageModule } from '../pages/food/food.module';
+import { FoodViewPageModule } from '../pages/food-view/food-view.module';
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
 
@@ -46,6 +47,7 @@ import { AuthProvider } from '../providers/auth/auth';
     HistoryPageModule,
     TrackPageModule,
     ProfilePageModule,
+    FoodPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

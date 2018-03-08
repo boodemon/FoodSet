@@ -99,10 +99,12 @@ export class RegisterPage {
   }
 
   login( username, password ){
+    let result = false;
     this.http.post(this.auth.api() + '/auth0/login', {username:username,password:password}).subscribe((response) => {
       let code = response['code'];
       if (code == 200) {
         localStorage.setItem('token', response['auth']);
+        result = true;
         this.navCtrl.setRoot(DashboardPage);
       } 
       console.log('response ', response);
@@ -110,6 +112,8 @@ export class RegisterPage {
       err => {
         console.log('err ', err);
       });
+    if( result )
+    this.navCtrl.setRoot(DashboardPage);
   }
 
 }

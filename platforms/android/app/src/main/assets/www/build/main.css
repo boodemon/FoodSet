@@ -25783,6 +25783,72 @@ page-dashboard hr {
   margin: 0;
 }
 
+page-food .food-data {
+  display: inline-block;
+  padding: 0;
+  position: relative;
+}
+
+page-food .food-data img {
+  width: 100%;
+}
+
+page-food .food-data .card-title {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  font-size: 2.4rem;
+  color: #010101;
+  text-shadow: 2px 2px 4px #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+page-food-view .card-md {
+  margin: 0;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+}
+
+page-food-view .card-md img {
+  width: 100%;
+}
+
+page-food-view .card-md .card-title {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  font-size: 2.4rem;
+  color: #010101;
+  text-shadow: 2px 2px 4px #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+page-food-view .item-md {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+page-food-view .item-md.item-block .item-inner {
+  padding-right: 0;
+  border-bottom: 0;
+}
+
+page-food-view .list-md {
+  margin: 0;
+}
+
+page-food-view .list-md .item-md {
+  border-bottom: #000 1px solid;
+  background: #fff;
+  border-radius: 2px;
+}
+
+page-food-view .list-md ion-select {
+  max-width: 100%;
+}
+
 page-forgot .btn-send .button-md {
   background: #f8b318;
   color: #010101;

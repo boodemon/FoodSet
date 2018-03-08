@@ -44,7 +44,8 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
   doLogin(){
-    this.http.post(this.api + '/auth0/login',this.user ).subscribe((response) => {
+
+    this.http.post(this.api + '/auth0/login', this.user ).subscribe((response) => {
         let code = response['code'];
         if( code == 200 ){
           localStorage.setItem('token',response['auth']);
@@ -52,7 +53,7 @@ export class LoginPage {
         }else{ 
           let alert = this.alertCtrl.create({
             title: 'Error',
-            subTitle: 'Username or Password not match. Please try again',
+            subTitle: response['message'],
             buttons: ['OK']
           });
           alert.present();
