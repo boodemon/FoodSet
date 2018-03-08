@@ -10,7 +10,6 @@ import { NativeStorage }from '@ionic-native/native-storage';
 
 import { MyApp }        from './app.component';
 import { HomePage }     from '../pages/home/home';
-<<<<<<< HEAD
 import { LoginPageModule }    from '../pages/login/login.module';
 import { RegisterPageModule } from '../pages/register/register.module';
 import { ForgotPageModule }   from '../pages/forgot/forgot.module';
@@ -22,18 +21,6 @@ import { ProfilePageModule } from '../pages/profile/profile.module';
 import { CategoryPageModule } from '../pages/category/category.module';
 import { FoodPageModule } from '../pages/food/food.module';
 import { FoodViewPageModule } from '../pages/food-view/food-view.module';
-=======
-import { LoginPage }    from '../pages/login/login';
-import { RegisterPage } from '../pages/register/register';
-import { ForgotPage }   from '../pages/forgot/forgot';
-import { DashboardPage } from '../pages/dashboard/dashboard'
-import { CreateOrderPage} from '../pages/create-order/create-order';
-import { HistoryPage } from '../pages/history/history';
-import { TrackPage } from '../pages/track/track';
-import { ProfilePage } from '../pages/profile/profile';
-import { CategoryPage } from '../pages/category/category';
-import { FoodPage } from '../pages/food/food';
->>>>>>> 3dee4e24759562cac634343a8882b04f029879ba
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
 
@@ -41,16 +28,6 @@ import { AuthProvider } from '../providers/auth/auth';
   declarations: [
     MyApp,
     HomePage,
-    LoginPage,
-    ForgotPage,
-    RegisterPage,
-    DashboardPage,
-    CreateOrderPage,
-    HistoryPage,
-    TrackPage,
-    ProfilePage,
-    CategoryPage,
-    FoodPage
 
   ],
   imports: [
@@ -59,7 +36,6 @@ import { AuthProvider } from '../providers/auth/auth';
       preloadModules: true
     }),
     HttpClientModule,
-<<<<<<< HEAD
     LoginPageModule,
     CategoryPageModule,
     CreateOrderPageModule,
@@ -72,23 +48,11 @@ import { AuthProvider } from '../providers/auth/auth';
     TrackPageModule,
     ProfilePageModule,
     FoodPageModule,
-=======
->>>>>>> 3dee4e24759562cac634343a8882b04f029879ba
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    LoginPage,
-    RegisterPage,
-    ForgotPage,
-    DashboardPage,
-    CreateOrderPage,
-    HistoryPage,
-    TrackPage,
-    ProfilePage,
-    CategoryPage,
-    FoodPage
   ],
   providers: [
     StatusBar,
