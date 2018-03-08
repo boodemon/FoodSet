@@ -61,6 +61,12 @@ export class LoginPage {
         console.log('response ', response );
       },
       err =>{
+        let alert = this.alertCtrl.create({
+            title: 'Error',
+            subTitle: err.message,
+            buttons: ['OK']
+        });
+        alert.present();
         console.log('err ', err );
       });
   }
