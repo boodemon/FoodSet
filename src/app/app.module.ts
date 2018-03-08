@@ -48,6 +48,7 @@ import { AuthProvider } from '../providers/auth/auth';
     TrackPageModule,
     ProfilePageModule,
     FoodPageModule,
+    FoodViewPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

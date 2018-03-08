@@ -39,17 +39,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-facebook4": {
-    "source": {
-      "type": "registry",
-      "id": "https://github.com/amritk/cordova-plugin-facebook4"
-    },
-    "is_top_level": true,
-    "variables": {
-      "APP_ID": "2018552691718690",
-      "APP_NAME": "TigerwealthOrderFood"
-    }
-  },
   "cordova-plugin-advanced-http": {
     "source": {
       "type": "registry",
