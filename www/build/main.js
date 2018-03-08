@@ -1164,8 +1164,8 @@ var AuthProvider = (function () {
         console.log('Hello AuthProvider Provider');
     }
     AuthProvider.prototype.api = function () {
-        //return 'http://localhost/2017/T-API/api';
-        return 'http://ex.saiimog.com/set-conference/api';
+        return 'http://localhost/2017/T-API/api';
+        //return 'http://ex.saiimog.com/set-conference/api';
     };
     AuthProvider.prototype.token = function () {
         return localStorage.getItem('token');
@@ -1600,12 +1600,6 @@ var LoginPage = (function () {
             }
             console.log('response ', response);
         }, function (err) {
-            var alert = _this.alertCtrl.create({
-                title: 'Error',
-                subTitle: err.message,
-                buttons: ['OK']
-            });
-            alert.present();
             console.log('err ', err);
         });
     };
