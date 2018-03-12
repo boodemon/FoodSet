@@ -27,10 +27,6 @@ export class CategoryPage {
       private http:HttpClient ,
       private auth:AuthProvider
             ) {
-      let online = this.auth.online();
-      if( online =! 'online' ){
-        this.navCtrl.setRoot(LoginPage);
-      }
   }
 
   ionViewDidLoad() {

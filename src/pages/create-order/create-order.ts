@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { CategoryPage } from '../category/category';
+import { AuthProvider } from '../../providers/auth/auth';
 /**
  * Generated class for the CreateOrderPage page.
  *
@@ -16,7 +17,8 @@ import { CategoryPage } from '../category/category';
 })
 export class CreateOrderPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private auth:AuthProvider) {
+    auth.online();
   }
 
   ionViewDidLoad() {

@@ -215,6 +215,22 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
+    "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
+    "pluginId": "cordova-plugin-facebook4",
+    "clobbers": [
+      "facebookConnectPlugin"
+    ]
+  },
+  {
+    "id": "cordova-plugin-googleplus.GooglePlus",
+    "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
+    "pluginId": "cordova-plugin-googleplus",
+    "clobbers": [
+      "window.plugins.googleplus"
+    ]
+  },
+  {
     "id": "cordova-plugin-nativestorage.mainHandle",
     "file": "plugins/cordova-plugin-nativestorage/www/mainHandle.js",
     "pluginId": "cordova-plugin-nativestorage",
@@ -241,6 +257,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-sqlite-storage.SQLitePlugin",
+    "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+    "pluginId": "cordova-sqlite-storage",
+    "clobbers": [
+      "SQLitePlugin"
+    ]
+  },
+  {
     "id": "ionic-plugin-keyboard.keyboard",
     "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
     "pluginId": "ionic-plugin-keyboard",
@@ -256,10 +280,13 @@ module.exports.metadata =
   "cordova-plugin-file": "6.0.1",
   "cordova-plugin-advanced-http": "1.9.1",
   "cordova-plugin-device": "1.1.4",
+  "cordova-plugin-facebook4": "1.9.1",
+  "cordova-plugin-googleplus": "5.2.1",
   "cordova-plugin-ionic-webview": "1.1.16",
   "cordova-plugin-nativestorage": "2.3.0",
   "cordova-plugin-splashscreen": "4.0.3",
   "cordova-plugin-whitelist": "1.3.1",
+  "cordova-sqlite-storage": "2.2.1",
   "ionic-plugin-keyboard": "2.2.1"
 };
 // BOTTOM OF METADATA

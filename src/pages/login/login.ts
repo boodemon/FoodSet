@@ -68,7 +68,24 @@ export class LoginPage {
   loginFacebook(){
     this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
       this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
-        this.userData = {email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name']}
+        this.http.post(this.api + '/auth0/facebook', profile).subscribe((response) => {
+          let code = response['code'];
+          if (code == 200) {
+            localStorage.setItem('token', response['auth']);
+            this.navCtrl.setRoot(DashboardPage);
+          } else {
+            let alert = this.alertCtrl.create({
+              title: 'Error',
+              subTitle: response['message'],
+              buttons: ['OK']
+            });
+            alert.present();
+          }
+        },
+          err => {
+            alert('err \n'+ JSON.stringify( err ) );
+          });
+        //this.userData = {email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name']}
       });
     });
   }

@@ -19,6 +19,7 @@ export class AuthProvider {
     ) {
     console.log('Hello AuthProvider Provider');
   }
+  online_status:string = '';
 
   api(){
     //return 'http://localhost/2017/T-API/api';
@@ -43,17 +44,20 @@ export class AuthProvider {
   }
   
   online(){
-    return this.http.get( this.api() + '/user?token=' + this.token() ).subscribe((data)=>{
-      console.log('check online ', data,' code is ' , data['code'] ); 
-      let code = data['code'];
-      if( code != 200 ){
-        this.presentAlert( data['msg'] );
-        return 'ofline';
-      }else{
-        return 'online';
-      }
-    });
+    var status = '';// = 'online';
+    this.http.get( this.api() + '/user?token=' + this.token() ).subscribe((res) => {
+        let code = res['code'];
+        if( code != 200 ){
+          alert(res['msg']);
+          this.logout();
+        }
+    },err =>{
+      this.online_status = 'offline';
+    }); 
+    //console.log('status ', this.online_status );
+    return this.online_status;
   }
+
   presentAlert( msg ) {
     let alert = this.alertCtrl.create({
       title: 'Error!!',
@@ -65,6 +69,7 @@ export class AuthProvider {
 
   logout(){
     localStorage.removeItem('token');
+    location.reload();
   }
 
 }
