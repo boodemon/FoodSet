@@ -122,6 +122,7 @@ var CategoryPageModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__food_food__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_login__ = __webpack_require__(82);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -131,6 +132,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -154,7 +156,10 @@ var CategoryPage = (function () {
             content: 'Loading...',
             dismissOnPageChange: true
         });
-        this.auth.online();
+        var online = this.auth.online();
+        if (online = !'online') {
+            this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__login_login__["a" /* LoginPage */]);
+        }
     }
     CategoryPage.prototype.ionViewDidLoad = function () {
         //console.log('ionViewDidLoad CategoryPage');
@@ -176,13 +181,10 @@ var CategoryPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-category',template:/*ion-inline-start:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\category\category.html"*/'<!--\n\n  Generated template for the CategoryPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>FOOD CATEGORY</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-card *ngFor="let row of rows" (click)="goFood( row.id )">\n\n    <img src="{{ row.image }}" />\n\n    <div class="card-title">{{ row.name }}</div>\n\n  </ion-card>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\category\category.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _e || Object])
     ], CategoryPage);
     return CategoryPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=category.js.map
@@ -199,6 +201,7 @@ var CategoryPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__food_view_food_view__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__category_category__ = __webpack_require__(160);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -208,6 +211,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -244,18 +248,19 @@ var FoodPage = (function () {
     FoodPage.prototype.goFoodview = function (id) {
         this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__food_view_food_view__["a" /* FoodViewPage */], { id: id });
     };
+    FoodPage.prototype.goCreate = function () {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_5__category_category__["a" /* CategoryPage */]);
+    };
     FoodPage.prototype.img = function (img_name) {
     };
     FoodPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-food',template:/*ion-inline-start:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\food\food.html"*/'<!--\n\n  Generated template for the FoodPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>FOOD DATA</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n          <ion-card class="food-data" *ngFor="let row of foods" (click)="goFoodview( row.id )">\n\n              <img src="{{ row.food_image }}" />\n\n              <div class="card-title">{{ row.food_name }}</div>\n\n          </ion-card> \n\n  \n\n</ion-content>\n\n<ion-footer>\n\n  <ion-toolbar>\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col col-6>\n\n          <button ion-button color="light" full (click)="goCreate()">Back</button>\n\n        </ion-col>\n\n        <ion-col col-6>\n\n          <button ion-button color="defult" full (click)="goCategory()">CART</button>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\food\food.html"*/,
+            selector: 'page-food',template:/*ion-inline-start:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\food\food.html"*/'<!--\n\n  Generated template for the FoodPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>FOOD DATA</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n          <ion-card class="food-data" *ngFor="let row of foods" (click)="goFoodview( row.id )">\n\n              <img src="{{ row.food_image }}" />\n\n              <div class="card-title">{{ row.food_name }}</div>\n\n          </ion-card> \n\n  \n\n</ion-content>\n\n<ion-footer>\n\n  <ion-toolbar>\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col col-6>\n\n          <button ion-button color="light" full (click)="goCreate()">Back</button>\n\n        </ion-col>\n\n        <ion-col col-6>\n\n          <button ion-button color="defult" full (click)="goCart()">CART</button>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\food\food.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _d || Object])
     ], FoodPage);
     return FoodPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=food.js.map
@@ -271,6 +276,7 @@ var FoodPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common_http__ = __webpack_require__(19);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__food_food__ = __webpack_require__(162);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -280,6 +286,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -326,16 +333,20 @@ var FoodViewPage = (function () {
             }
         });
     };
+    FoodViewPage.prototype.goFood = function (id) {
+        this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_4__food_food__["a" /* FoodPage */], { category_id: id });
+    };
+    FoodViewPage.prototype.doCart = function () {
+        alert('comming soon...');
+    };
     FoodViewPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-food-view',template:/*ion-inline-start:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\food-view\food-view.html"*/'<!--\n\n  Generated template for the FoodViewPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>FOOD DETAIL</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-card>\n\n    <img src="{{ row.food_image }}" />\n\n    <div class="card-title">{{ row.food_name }}</div>\n\n  </ion-card>\n\n    \n\n    <form>\n\n      <ion-grid>\n\n        <ion-row>\n\n          <ion-col text-right>Calorie <strong>0</strong> (kcal)</ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-4>\n\n            <ion-item>\n\n              <ion-label>Restaurant</ion-label>\n\n            </ion-item>\n\n          </ion-col>\n\n          <ion-col col-8>\n\n            <ion-list>\n\n              <ion-item>\n\n                <ion-select *ngFor="let price of pricelist">\n\n                  <ion-option value="{{ price }}">{{ price.restourant }}</ion-option>\n\n                </ion-select>\n\n              </ion-item>\n\n            </ion-list>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-4>\n\n            <ion-item>\n\n              <ion-label fixed>Quanttiitty</ion-label>\n\n            </ion-item>\n\n          </ion-col>\n\n          <ion-col col-3>\n\n            <ion-item>\n\n              <ion-input type="number" value="1"></ion-input>\n\n            </ion-item>\n\n          </ion-col>\n\n          <ion-col col-3>\n\n             <ion-label fixed>Plates</ion-label>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row> \n\n          <ion-col>\n\n            <ion-item>\n\n              <ion-label stacked>Remark</ion-label>\n\n              <ion-textarea type="text" name="jobname"></ion-textarea>\n\n            </ion-item>\n\n            <p class="err"></p>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-6 text-right>Price</ion-col>\n\n          <ion-col col-6 text-right><strong>0</strong> Bath.</ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-6 text-right>Sum Price</ion-col>\n\n          <ion-col col-6 text-right><strong>0</strong> Bath.</ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-6>\n\n            <button ion-button color="light" full (click)="goCreate()">Back</button>\n\n          </ion-col>\n\n          <ion-col col-6>\n\n            <button ion-button color="defult" full (click)="goCategory()">ADD CART</button>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n    </form>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\food-view\food-view.html"*/,
+            selector: 'page-food-view',template:/*ion-inline-start:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\food-view\food-view.html"*/'<!--\n\n  Generated template for the FoodViewPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>FOOD DETAIL</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <ion-card>\n\n    <img src="{{ row.food_image }}" />\n\n    <div class="card-title">{{ row.food_name }}</div>\n\n  </ion-card>\n\n    \n\n    <form>\n\n      <ion-grid>\n\n        <ion-row>\n\n          <ion-col text-right>Calorie <strong>0</strong> (kcal)</ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-4>\n\n            <ion-item>\n\n              <ion-label>Restaurant</ion-label>\n\n            </ion-item>\n\n          </ion-col>\n\n          <ion-col col-8>\n\n            <ion-list>\n\n              <ion-item>\n\n                <ion-select *ngFor="let price of pricelist">\n\n                  <ion-option value="{{ price }}">{{ price.restourant }}</ion-option>\n\n                </ion-select>\n\n              </ion-item>\n\n            </ion-list>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-4>\n\n            <ion-item>\n\n              <ion-label fixed>Quanttiitty</ion-label>\n\n            </ion-item>\n\n          </ion-col>\n\n          <ion-col col-3>\n\n            <ion-item>\n\n              <ion-input type="number" value="1"></ion-input>\n\n            </ion-item>\n\n          </ion-col>\n\n          <ion-col col-3>\n\n             <ion-label fixed>Plates</ion-label>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row> \n\n          <ion-col>\n\n            <ion-item>\n\n              <ion-label stacked>Remark</ion-label>\n\n              <ion-textarea type="text" name="jobname"></ion-textarea>\n\n            </ion-item>\n\n            <p class="err"></p>\n\n          </ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-6 text-right>Price</ion-col>\n\n          <ion-col col-6 text-right><strong>0</strong> Bath.</ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-6 text-right>Sum Price</ion-col>\n\n          <ion-col col-6 text-right><strong>0</strong> Bath.</ion-col>\n\n        </ion-row>\n\n        <ion-row>\n\n          <ion-col col-6>\n\n            <button ion-button color="light" full (click)="goFood(row.category_id)">Back</button>\n\n          </ion-col>\n\n          <ion-col col-6>\n\n            <button ion-button color="defult" full (click)="doCart">ADD CART</button>\n\n          </ion-col>\n\n        </ion-row>\n\n      </ion-grid>\n\n    </form>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\food-view\food-view.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__angular_common_http__["a" /* HttpClient */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _d || Object])
     ], FoodViewPage);
     return FoodViewPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=food-view.js.map
@@ -1164,8 +1175,8 @@ var AuthProvider = (function () {
         console.log('Hello AuthProvider Provider');
     }
     AuthProvider.prototype.api = function () {
-        return 'http://localhost/2017/T-API/api';
-        //return 'http://ex.saiimog.com/set-conference/api';
+        //return 'http://localhost/2017/T-API/api';
+        return 'http://ex.saiimog.com/set-conference/api';
     };
     AuthProvider.prototype.token = function () {
         return localStorage.getItem('token');
@@ -1186,7 +1197,10 @@ var AuthProvider = (function () {
             var code = data['code'];
             if (code != 200) {
                 _this.presentAlert(data['msg']);
-                _this.removeToken();
+                return 'ofline';
+            }
+            else {
+                return 'online';
             }
         });
     };
@@ -1203,10 +1217,10 @@ var AuthProvider = (function () {
     };
     AuthProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object])
     ], AuthProvider);
     return AuthProvider;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=auth.js.map
@@ -1489,7 +1503,10 @@ var DashboardPage = (function () {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.auth = auth;
-        this.auth.online();
+        var online = this.auth.online();
+        if (online = !'online') {
+            this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_7__login_login__["a" /* LoginPage */]);
+        }
     }
     DashboardPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad DashboardPage');
@@ -1517,9 +1534,10 @@ var DashboardPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-dashboard',template:/*ion-inline-start:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\dashboard\dashboard.html"*/'<!--\n\n  Generated template for the DashboardPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n  <ion-navbar>\n\n    <button ion-button menuToggle>\n\n      <ion-icon name="menu"></ion-icon>\n\n    </button>\n\n    <ion-title>DASHBOARD</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <h5>DASHBOARD ORDER</h5>\n\n  <hr/>\n\n  <ion-grid>\n\n    <ion-row class="food-panel">\n\n      <ion-col col-6 class="food-create" (click)="goCreate()">\n\n        <img src="assets/imgs/food-serb-2.svg" /> \n\n        <span>CREATE ORDER</span>\n\n      </ion-col>\n\n      <ion-col col-6 class="food-tracking" (click)="goTrack()" >\n\n        <img src="assets/imgs/food-delivery.svg" />\n\n        <span>ORDER TRACKING</span>\n\n      </ion-col> \n\n      <ion-col col-6 class="food-history" (click)="goHistory()">\n\n        <img src="assets/imgs/food-history.svg" />\n\n        <span>ORDER HISTORY</span>\n\n      </ion-col>\n\n      <ion-col col-6 class="food-profile" (click)="goProfile()">\n\n        <img src="assets/imgs/food-profile.svg" />\n\n        <span>PROFILE</span>\n\n      </ion-col>\n\n      <ion-col col-6 class="food-about" (click)="goAbout()">\n\n        <img src="assets/imgs/food-about.svg" />\n\n        <span>ABOUT US</span>\n\n      </ion-col>\n\n      <ion-col col-6 class="food-logout" (click)="goLogout()">\n\n        <img src="assets/imgs/food-logout.svg" />\n\n        <span>LOGOUT</span>\n\n      </ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\dashboard\dashboard.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_6__providers_auth_auth__["a" /* AuthProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_6__providers_auth_auth__["a" /* AuthProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__providers_auth_auth__["a" /* AuthProvider */]) === "function" && _c || Object])
     ], DashboardPage);
     return DashboardPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=dashboard.js.map

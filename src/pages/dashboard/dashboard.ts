@@ -22,7 +22,10 @@ import { LoginPage } from '../login/login';
 export class DashboardPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private auth:AuthProvider) {
-    this.auth.online();
+    let online = this.auth.online();
+    if (online = ! 'online') {
+      this.navCtrl.setRoot(LoginPage);
+    }
   }
 
   ionViewDidLoad() {

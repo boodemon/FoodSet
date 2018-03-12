@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FoodPage } from '../food/food';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the CategoryPage page.
@@ -26,7 +27,10 @@ export class CategoryPage {
       private http:HttpClient ,
       private auth:AuthProvider
             ) {
-      this.auth.online();
+      let online = this.auth.online();
+      if( online =! 'online' ){
+        this.navCtrl.setRoot(LoginPage);
+      }
   }
 
   ionViewDidLoad() {

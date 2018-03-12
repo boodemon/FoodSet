@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../../providers/auth/auth';
+import { FoodPage } from '../food/food';
 
 /**
  * Generated class for the FoodViewPage page.
@@ -54,6 +55,13 @@ export class FoodViewPage {
         console.log('pricelist : ', this.pricelist);
       }
     })
+  }
+  goFood(id){
+    this.navCtrl.setRoot( FoodPage, {category_id:id});
+  }
+
+  doCart(){
+    alert('comming soon...');
   }
 
 }

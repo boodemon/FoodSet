@@ -21,8 +21,8 @@ export class AuthProvider {
   }
 
   api(){
-    return 'http://localhost/2017/T-API/api';
-    //return 'http://ex.saiimog.com/set-conference/api';
+    //return 'http://localhost/2017/T-API/api';
+    return 'http://ex.saiimog.com/set-conference/api';
 
   }
 
@@ -48,7 +48,9 @@ export class AuthProvider {
       let code = data['code'];
       if( code != 200 ){
         this.presentAlert( data['msg'] );
-        this.removeToken();
+        return 'ofline';
+      }else{
+        return 'online';
       }
     });
   }

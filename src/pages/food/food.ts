@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FoodViewPage } from '../food-view/food-view';
+import { CategoryPage } from '../category/category';
 
 /**
  * Generated class for the FoodPage page.
@@ -44,6 +45,9 @@ export class FoodPage {
   }
   goFoodview(id){
     this.navCtrl.setRoot( FoodViewPage ,{id:id});
+  }
+  goCreate(){
+    this.navCtrl.setRoot( CategoryPage );
   }
   img(img_name){
     
