@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FoodPage } from '../food/food';
-import { LoginPage } from '../login/login';
+import { CreateOrderPage } from '../create-order/create-order';
 
 /**
  * Generated class for the CategoryPage page.
@@ -49,6 +49,9 @@ export class CategoryPage {
 
   goFood(id){
     this.navCtrl.push(FoodPage,{category_id:id});
+  }
+  goCreate() {
+    this.navCtrl.setRoot(CreateOrderPage);
   }
 
 }

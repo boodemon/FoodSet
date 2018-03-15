@@ -16,59 +16,75 @@
 <ion-content padding>
     <h4>ORDER INFOMATION</h4>
     <hr/>
-    <form>
+    <form (ngSubmit)="doCreate()" [formGroup]="creator">
       <ion-grid>
         <ion-row>
           <ion-col>
             <ion-item>
               <ion-label stacked>JOB NAME</ion-label>
-              <ion-input type="text" name="jobname" ></ion-input>
+              <ion-input type="text" name="jobname" formControlName="name"></ion-input>
             </ion-item>
-            <p class="err"></p>
+            <div *ngIf="creator.controls['name'].invalid && (creator.controls['name'].dirty || creator.controls['name'].touched)" class="alert alert-danger">
+                <div *ngIf="creator.controls['name'].errors.required">
+                *Please enter Job name.
+                </div>
+            </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item>
-              <ion-label stacked>JOB ADDRESS</ion-label>
-              <ion-textarea type="text" name="jobname" ></ion-textarea>
+              <ion-label stacked>ADDRESS</ion-label>
+              <ion-textarea type="text" name="address" formControlName="address"></ion-textarea>
             </ion-item>
-            <p class="err"></p>
+            <div *ngIf="creator.controls['address'].invalid && (creator.controls['address'].dirty || creator.controls['address'].touched)" class="alert alert-danger">
+              <div *ngIf="creator.controls['address'].errors.required">
+                *Please enter Job address.
+              </div>
+            </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col col-6>
             <ion-item>
-              <ion-label stacked>JOB DATE</ion-label>
-              <ion-input type="text" name="jobname" ></ion-input>
+              <ion-label stacked>Date</ion-label>
+              <ion-datetime displayFormat="YYYY-MM-DD" formControlName="onDate"></ion-datetime>
             </ion-item>
-            <p class="err"></p>
+            <div *ngIf="creator.controls['onDate'].invalid && (creator.controls['onDate'].dirty || creator.controls['onDate'].touched)" class="alert alert-danger">
+              <div *ngIf="creator.controls['onDate'].errors.required">
+                *Please enter Job date.
+              </div>
+            </div>
           </ion-col>
           <ion-col col-6>
             <ion-item>
-              <ion-label stacked>JOB TIME</ion-label>
-              <ion-input type="text" name="jobname" ></ion-input>
+              <ion-label stacked>TIME</ion-label>
+              <ion-datetime displayFormat="HH:mm"  formControlName="onTime"></ion-datetime>
             </ion-item>
-            <p class="err"></p>
+            <div *ngIf="creator.controls['onTime'].invalid && (creator.controls['onTime'].dirty || creator.controls['onTime'].touched)" class="alert alert-danger">
+              <div *ngIf="creator.controls['onTime'].errors.required">
+                *Please enter Job time.
+              </div>
+            </div>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-item>
               <ion-label stacked>JOB REMARK</ion-label>
-              <ion-textarea type="text" name="jobname"></ion-textarea>
+              <ion-textarea type="text" name="jobname" formControlName="remark"></ion-textarea>
             </ion-item>
-            <p class="err"></p>
           </ion-col> 
         </ion-row>
         <ion-row>
           <ion-col col-6>
-            <button ion-button color="light" full (click)="goDashboard()">CANCEL</button>
+            <button ion-button color="light" full type="button" (click)="goDashboard()">CANCEL</button>
           </ion-col>
           <ion-col col-6>
-            <button ion-button color="defult" full (click)="goCategory()">NEXT</button>
+            <button ion-button color="defult" full type="submit" [disabled]="!creator.valid">NEXT</button>
           </ion-col>
         </ion-row>
       </ion-grid>
     </form>
+     
 </ion-content>

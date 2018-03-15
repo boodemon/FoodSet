@@ -6,7 +6,10 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar }    from '@ionic-native/status-bar';
 import { Facebook }     from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 import { NativeStorage }from '@ionic-native/native-storage';
+import { SQLite } from '@ionic-native/sqlite';
+import { DatePicker } from '@ionic-native/date-picker';
 
 import { MyApp }        from './app.component';
 import { HomePage }     from '../pages/home/home';
@@ -23,6 +26,7 @@ import { FoodPageModule } from '../pages/food/food.module';
 import { FoodViewPageModule } from '../pages/food-view/food-view.module';
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
+import { QueryProvider } from '../providers/query/query';
 
 @NgModule({
   declarations: [
@@ -59,9 +63,13 @@ import { AuthProvider } from '../providers/auth/auth';
     StatusBar,
     SplashScreen,
     Facebook,
+    GooglePlus,
+    SQLite,
+    DatePicker,
     NativeStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    QueryProvider
   ]
 })
 export class AppModule {}

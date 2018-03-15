@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,LoadingController, AlertController} from 'ionic-angular';
 import { CreateOrderPage } from '../create-order/create-order';
 import { HistoryPage } from '../../pages/history/history';
 import { TrackPage } from '../track/track';
 import { ProfilePage } from '../profile/profile';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
+import { CategoryPage } from '../category/category';
 
 /**
  * Generated class for the DashboardPage page.
@@ -21,36 +22,76 @@ import { LoginPage } from '../login/login';
 })
 export class DashboardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private auth:AuthProvider) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private auth:AuthProvider,
+    private loader:LoadingController,
+    private alertCtrl:AlertController
+  ) {
     auth.online()
+    //this.loading.present();
   }
+  loading = this.loader.create({
+    content:'Loading ...',
+    dismissOnPageChange:true,
+
+  });
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DashboardPage');
   }
   goCreate(){
+    this.loading.present();
     this.navCtrl.setRoot(CreateOrderPage);
   }
 
   goHistory(){
+    this.loading.present();
     this.navCtrl.push( HistoryPage );
   }
 
   goTrack(){
-    this.navCtrl.push( TrackPage );
+    this.loading.present();
+    this.navCtrl.push( CategoryPage );
   }
   
   goProfile(){
+    this.loading.present();
     this.navCtrl.push( ProfilePage );
   }
   
   goAbout(){
-    this.navCtrl.push( ProfilePage );
+    this.loading.present();
   }
-  
-  goLogout(){
-    this.auth.logout();
-    this.navCtrl.setRoot( LoginPage );
+
+  goLogout() {
+    let confirm = this.alertCtrl.create({
+      title: 'Use Logout',
+      message: 'Do you want to Logout?',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.auth.logout();
+            this.navCtrl.setRoot(LoginPage);
+            console.log('Agree clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
+
+  // goLogout(){
+  //   this.auth.logout();
+  //   this.navCtrl.setRoot( LoginPage );
+  // }
 
 }

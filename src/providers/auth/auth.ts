@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AlertController } from 'ionic-angular';
+import { Facebook } from '@ionic-native/facebook';
+import { GooglePlus } from '@ionic-native/google-plus';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -16,6 +18,8 @@ export class AuthProvider {
   constructor(
       public http: HttpClient,
       private alertCtrl:AlertController,
+      private googlePlus: GooglePlus,
+      private facebook: Facebook
     ) {
     console.log('Hello AuthProvider Provider');
   }
@@ -44,12 +48,12 @@ export class AuthProvider {
   }
   
   online(){
-    var status = '';// = 'online';
     this.http.get( this.api() + '/user?token=' + this.token() ).subscribe((res) => {
         let code = res['code'];
         if( code != 200 ){
           alert(res['msg']);
           this.logout();
+          location.reload();
         }
     },err =>{
       this.online_status = 'offline';
@@ -68,8 +72,11 @@ export class AuthProvider {
   }
 
   logout(){
+    this.googlePlus.logout();
+    this.facebook.logout();
     localStorage.removeItem('token');
-    location.reload();
+    localStorage.removeItem('user');
+    //location.reload();
   }
 
 }

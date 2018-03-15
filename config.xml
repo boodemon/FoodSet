@@ -92,5 +92,10 @@
         <variable name="APP_ID" value="2018552691718690" />
         <variable name="APP_NAME" value="Set Conference" />
     </plugin>
-    <engine name="android" spec="~7.0.0" />
+    <plugin name="cordova-plugin-googleplus" spec="~5.2.1">
+        <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.283671105001" />
+    </plugin>
+    <plugin name="cordova-sqlite-storage" spec="~2.2.1" />
+    <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
+    <engine name="android" spec="7.0.0" />
 </widget>

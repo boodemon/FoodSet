@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FoodViewPage } from '../food-view/food-view';
@@ -20,11 +20,13 @@ import { CategoryPage } from '../category/category';
 export class FoodPage {
   foods:any = [];
   food_path:string;
+  category:string;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
     private http: HttpClient,
-    private auth: AuthProvider
+    private auth: AuthProvider,
+    private loader: LoadingController
     )
   {
     this.auth.online();
@@ -35,22 +37,32 @@ export class FoodPage {
     console.log('ionViewDidLoad FoodPage');
     this.getFood();
   }
+  loading = this.loader.create({
+    content: 'Loading...',
+    dismissOnPageChange: true
+  });
 
   getFood(){
+      this.loading.present();
       return this.http.get( this.auth.api() + '/foods/' + this.category_id +'?token=' + this.auth.token() ).subscribe( (data) => {
         this.foods = data['data'];
+        this.category = data['category'];
         this.food_path = data['food_path'];
         console.log('food ', this.foods , data , '| FOOD PATH ', this.food_path  );
+        this.loading.dismissAll();
       });
   }
   goFoodview(id){
+    this.loading.present();
     this.navCtrl.setRoot( FoodViewPage ,{id:id});
   }
   goCreate(){
+    this.loading.present();
     this.navCtrl.setRoot( CategoryPage );
   }
-  img(img_name){
-    
+
+  doCart() {
+    alert('comming soon...');
   }
 
 }

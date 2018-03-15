@@ -14,10 +14,22 @@
 
 
 <ion-content>
-          <ion-card class="food-data" *ngFor="let row of foods" (click)="goFoodview( row.id )">
+  <ion-grid>
+    <ion-row class="page-title">
+      <ion-col>
+        <h2>{{ category }}</h2>
+        <hr/>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-6  class="food-data" *ngFor="let row of foods" (click)="goFoodview( row.id )">
+          <ion-card>
               <img src="{{ row.food_image }}" />
               <div class="card-title">{{ row.food_name }}</div>
-          </ion-card> 
+          </ion-card>  
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   
 </ion-content>
 <ion-footer>

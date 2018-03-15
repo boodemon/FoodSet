@@ -19,22 +19,22 @@
     <div class="card-title">{{ row.food_name }}</div>
   </ion-card>
     
-    <form>
+    <form (ngSubmit)="doSubmit()" [formGroup]="cart">
       <ion-grid>
         <ion-row>
-          <ion-col text-right>Calorie <strong>0</strong> (kcal)</ion-col>
+          <ion-col text-right>Calorie <strong>{{ row.kcal }}</strong> (kcal)</ion-col>
         </ion-row>
         <ion-row>
           <ion-col col-4>
             <ion-item>
-              <ion-label>Restaurant</ion-label>
+              <ion-label>Restaurant </ion-label>
             </ion-item>
           </ion-col>
           <ion-col col-8>
             <ion-list>
               <ion-item>
-                <ion-select *ngFor="let price of pricelist">
-                  <ion-option value="{{ price }}">{{ price.restourant }}</ion-option>
+                <ion-select formControlName="price_id" interface="popover" (change)="doPrice()">
+                  <ion-option *ngFor="let price of pricelist; let i = index;" [value]="price.id">{{ price.restourant }} index is{{ price.id }}</ion-option>
                 </ion-select>
               </ion-item>
             </ion-list>
@@ -43,12 +43,12 @@
         <ion-row>
           <ion-col col-4>
             <ion-item>
-              <ion-label fixed>Quanttiitty</ion-label>
+              <ion-label fixed>Quantity</ion-label>
             </ion-item>
           </ion-col>
           <ion-col col-3>
             <ion-item>
-              <ion-input type="number" value="1"></ion-input>
+              <ion-input type="number"  formControlName="quantity" (change)="doQuantity()" value="1"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col col-3>
@@ -59,27 +59,28 @@
           <ion-col>
             <ion-item>
               <ion-label stacked>Remark</ion-label>
-              <ion-textarea type="text" name="jobname"></ion-textarea>
+              <ion-textarea type="text" name="remark"  formControlName="remark" ></ion-textarea>
             </ion-item>
             <p class="err"></p>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col col-6 text-right>Price</ion-col>
-          <ion-col col-6 text-right><strong>0</strong> Bath.</ion-col>
+          <ion-col col-6 text-right><strong>{{ price }}</strong> Bath.</ion-col>
         </ion-row>
         <ion-row>
           <ion-col col-6 text-right>Sum Price</ion-col>
-          <ion-col col-6 text-right><strong>0</strong> Bath.</ion-col>
+          <ion-col col-6 text-right><strong>{{ amount }}</strong> Bath.</ion-col>
         </ion-row>
         <ion-row>
           <ion-col col-6>
-            <button ion-button color="light" full (click)="goFood(row.category_id)">Back</button>
+            <button ion-button color="light" type="button" full (click)="goFood(row.category_id)">Back</button>
           </ion-col>
           <ion-col col-6>
-            <button ion-button color="defult" full (click)="doCart">ADD CART</button>
+            <button ion-button color="defult" type="submit"  (click)="doCart">ADD CART</button>
           </ion-col>
         </ion-row>
       </ion-grid>
     </form>
+    {{ txtres }}
 </ion-content>

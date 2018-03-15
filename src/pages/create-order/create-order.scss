@@ -5,10 +5,18 @@ page-create-order {
         background:transparent;
         
     }
+
     .item-md.item-block{
         .item-inner{
             padding-right:0;
             border-bottom:0;
         } 
     }
+
+    .item-label-stacked ion-datetime, .item-label-floating ion-datetime {
+    padding-left: 10px;
+    width: 100%;
+    background:$white;
+    border-radius: 4px;
+}
 }
