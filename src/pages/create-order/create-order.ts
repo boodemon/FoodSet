@@ -190,7 +190,7 @@ export class CreateOrderPage {
         let row = data.rows.item(0);
         input.get('id').setValue(row.id);
         input.get('name').setValue(row.jobName);
-        input.get('address').setValue(row.jobName);
+        input.get('address').setValue(row.jobAddress);
         input.get('onDate').setValue(row.jobDate);
         input.get('onTime').setValue(row.jobTime);
         input.get('remark').setValue(row.jobRemark);

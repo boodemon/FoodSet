@@ -31,10 +31,10 @@ var map = {
 		177
 	],
 	"../pages/dashboard/dashboard.module": [
-		178
+		179
 	],
 	"../pages/food-view/food-view.module": [
-		179
+		178
 	],
 	"../pages/food/food.module": [
 		180
@@ -906,44 +906,6 @@ var CreateOrderPageModule = (function () {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardPageModule", function() { return DashboardPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard__ = __webpack_require__(45);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-var DashboardPageModule = (function () {
-    function DashboardPageModule() {
-    }
-    DashboardPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__dashboard__["a" /* DashboardPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__dashboard__["a" /* DashboardPage */]),
-            ],
-        })
-    ], DashboardPageModule);
-    return DashboardPageModule;
-}());
-
-//# sourceMappingURL=dashboard.module.js.map
-
-/***/ }),
-
-/***/ 179:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FoodViewPageModule", function() { return FoodViewPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
@@ -974,6 +936,44 @@ var FoodViewPageModule = (function () {
 }());
 
 //# sourceMappingURL=food-view.module.js.map
+
+/***/ }),
+
+/***/ 179:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardPageModule", function() { return DashboardPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard__ = __webpack_require__(45);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var DashboardPageModule = (function () {
+    function DashboardPageModule() {
+    }
+    DashboardPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__dashboard__["a" /* DashboardPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__dashboard__["a" /* DashboardPage */]),
+            ],
+        })
+    ], DashboardPageModule);
+    return DashboardPageModule;
+}());
+
+//# sourceMappingURL=dashboard.module.js.map
 
 /***/ }),
 
@@ -1286,14 +1286,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_login_login_module__ = __webpack_require__(183);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_register_register_module__ = __webpack_require__(185);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_forgot_forgot_module__ = __webpack_require__(181);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_dashboard_dashboard_module__ = __webpack_require__(178);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_dashboard_dashboard_module__ = __webpack_require__(179);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_create_order_create_order_module__ = __webpack_require__(177);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_history_history_module__ = __webpack_require__(182);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_track_track_module__ = __webpack_require__(186);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_profile_profile_module__ = __webpack_require__(184);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_category_category_module__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_food_food_module__ = __webpack_require__(180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_food_view_food_view_module__ = __webpack_require__(179);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_food_view_food_view_module__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_checkout_checkout_module__ = __webpack_require__(176);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_auth_auth__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_query_query__ = __webpack_require__(54);
@@ -1350,8 +1350,8 @@ var AppModule = (function () {
                         { loadChildren: '../pages/category/category.module#CategoryPageModule', name: 'CategoryPage', segment: 'category', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/checkout/checkout.module#CheckoutPageModule', name: 'CheckoutPage', segment: 'checkout', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/create-order/create-order.module#CreateOrderPageModule', name: 'CreateOrderPage', segment: 'create-order', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'DashboardPage', segment: 'dashboard', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/food-view/food-view.module#FoodViewPageModule', name: 'FoodViewPage', segment: 'food-view', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'DashboardPage', segment: 'dashboard', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/food/food.module#FoodPageModule', name: 'FoodPage', segment: 'food', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/forgot/forgot.module#ForgotPageModule', name: 'ForgotPage', segment: 'forgot', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/history/history.module#HistoryPageModule', name: 'HistoryPage', segment: 'history', priority: 'low', defaultHistory: [] },
@@ -1608,7 +1608,7 @@ var CheckoutPage = (function () {
     };
     CheckoutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-checkout',template:/*ion-inline-start:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\checkout\checkout.html"*/'<!--\n\n  Generated template for the CheckoutPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Order Cart</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <h5>ORDER CART</h5>\n\n  <hr/>\n\n  <ion-grid>\n\n    <ion-row>\n\n        <ion-col col-4><strong>JOB NAME : </strong></ion-col>\n\n        <ion-col col-8>{{ head.jobName }}</ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n        <ion-col col-4><strong>ADDRESS : </strong></ion-col>\n\n        <ion-col col-8>{{ head.jobAddress }}</ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n        <ion-col col-4><strong>REMARK : </strong></ion-col>\n\n        <ion-col col-8>{{ head.jobAddress }}</ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n        <ion-col col-2><strong>DATE : </strong></ion-col>\n\n        <ion-col col-4>{{ head.jobDate | date:\'dd/MM/yyyy\'}}</ion-col>\n\n        <ion-col col-2 text-right><strong>TIME : </strong></ion-col>\n\n        <ion-col col-4>{{ head.jobTime }}</ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n  \n\n  <ion-grid>\n\n    <ion-row class="tb-head">\n\n      <ion-col col-1>No.</ion-col>\n\n      <ion-col col-4>Food</ion-col>\n\n      <ion-col col-2>Price</ion-col>\n\n      <ion-col col-2>Qty</ion-col>\n\n      <ion-col col-2>Amount</ion-col>\n\n      <ion-col col-1>#</ion-col>\n\n    </ion-row>\n\n    <ion-row *ngFor="let fd of lists; let i = index;" class="tb-detail">\n\n      <ion-col col-1>{{ i+1 }}</ion-col>\n\n      <ion-col col-4>{{ fd.food_name }}<br>{{ fd.remark }}</ion-col>\n\n      <ion-col col-2 text-right>{{ fd.price }}</ion-col>\n\n      <ion-col col-2 text-center>{{ fd.quantity }}</ion-col>\n\n      <ion-col col-2 text-right>{{ fd.amount }}</ion-col>\n\n      <ion-col col-1  text-right><ion-icon name="ios-trash-outline" color="red"></ion-icon></ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n  <hr/>\n\n</ion-content>\n\n<ion-footer>\n\n  <ion-toolbar>\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col col-6>\n\n          <button ion-button color="light" full (click)="goContinue()">Continue</button>\n\n        </ion-col>\n\n        <ion-col col-6>\n\n          <button ion-button color="defult" full (click)="goPayment()">Checkout</button>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\checkout\checkout.html"*/,
+            selector: 'page-checkout',template:/*ion-inline-start:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\checkout\checkout.html"*/'<!--\n\n  Generated template for the CheckoutPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>Order Cart</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <h5>ORDER CART</h5>\n\n  <hr/>\n\n  <ion-grid>\n\n    <ion-row>\n\n        <ion-col col-4><strong>JOB NAME : </strong></ion-col>\n\n        <ion-col col-8>{{ head.jobName }}</ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n        <ion-col col-4><strong>ADDRESS : </strong></ion-col>\n\n        <ion-col col-8>{{ head.jobAddress }}</ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n        <ion-col col-4><strong>REMARK : </strong></ion-col>\n\n        <ion-col col-8>{{ head.jobRemark }}</ion-col>\n\n    </ion-row>\n\n    <ion-row>\n\n        <ion-col col-2><strong>DATE : </strong></ion-col>\n\n        <ion-col col-4>{{ head.jobDate | date:\'dd/MM/yyyy\'}}</ion-col>\n\n        <ion-col col-2 text-right><strong>TIME : </strong></ion-col>\n\n        <ion-col col-4>{{ head.jobTime }}</ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n  \n\n  <ion-grid>\n\n    <ion-row class="tb-head">\n\n      <ion-col col-1>No.</ion-col>\n\n      <ion-col col-4>Food</ion-col>\n\n      <ion-col col-2>Price</ion-col>\n\n      <ion-col col-2>Qty</ion-col>\n\n      <ion-col col-2>Amount</ion-col>\n\n      <ion-col col-1>#</ion-col>\n\n    </ion-row>\n\n    <ion-row *ngFor="let fd of lists; let i = index;" class="tb-detail">\n\n      <ion-col col-1>{{ i+1 }}</ion-col>\n\n      <ion-col col-4>{{ fd.food_name }}<span *ngIf="fd.remark!=\'\'"><br>{{ fd.remark }}</span></ion-col>\n\n      <ion-col col-2 text-right>{{ fd.price }}</ion-col>\n\n      <ion-col col-2 text-center>{{ fd.quantity }}</ion-col>\n\n      <ion-col col-2 text-right>{{ fd.amount }}</ion-col>\n\n      <ion-col col-1  text-right><ion-icon name="ios-trash-outline" color="red"></ion-icon></ion-col>\n\n    </ion-row>\n\n  </ion-grid>\n\n  <hr/>\n\n</ion-content>\n\n<ion-footer>\n\n  <ion-toolbar>\n\n    <ion-grid>\n\n      <ion-row>\n\n        <ion-col col-6>\n\n          <button ion-button color="light" full (click)="goContinue()">Continue</button>\n\n        </ion-col>\n\n        <ion-col col-6>\n\n          <button ion-button color="defult" full (click)="goPayment()">Checkout</button>\n\n        </ion-col>\n\n      </ion-row>\n\n    </ion-grid>\n\n  </ion-toolbar>\n\n</ion-footer>'/*ion-inline-end:"D:\Outsource\2017\Tigerwealth\t-mobile\src\pages\checkout\checkout.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
@@ -2162,7 +2162,7 @@ var CreateOrderPage = (function () {
                 var row = data.rows.item(0);
                 input.get('id').setValue(row.id);
                 input.get('name').setValue(row.jobName);
-                input.get('address').setValue(row.jobName);
+                input.get('address').setValue(row.jobAddress);
                 input.get('onDate').setValue(row.jobDate);
                 input.get('onTime').setValue(row.jobTime);
                 input.get('remark').setValue(row.jobRemark);
