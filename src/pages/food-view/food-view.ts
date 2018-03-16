@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { FoodPage } from '../food/food';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { SQLiteObject } from '@ionic-native/sqlite';
 import { FormBuilder, Validators,FormGroup} from '@angular/forms';
+// Page //
+import { FoodPage } from '../food/food';
+import { CheckoutPage } from '../checkout/checkout';
+
 // Provider include //
 import { AuthProvider } from '../../providers/auth/auth';
 import { QueryProvider } from '../../providers/query/query';
@@ -31,6 +34,7 @@ export class FoodViewPage {
   restourant:string;
   cart:FormGroup;
   action:string = 'new';
+  arrprice:any = [];
   private table:string = 'orderlist';
   private user = JSON.parse( localStorage.getItem('user') );
   public price:number;
@@ -41,7 +45,6 @@ export class FoodViewPage {
       public navParams: NavParams,
       private http: HttpClient,
       private auth:AuthProvider,
-      private sqlite:SQLite,
       private platform:Platform,
       private loader:LoadingController,
       private frm: FormBuilder,
@@ -102,6 +105,7 @@ export class FoodViewPage {
   }
   
   prices(){
+    this.loading.present();
     return this.http.get(this.auth.api() + '/food-price/' + this.food_id + '?token=' + this.auth.token()).subscribe((response) => {
       if (response['code'] == 200) {
         this.pricelist  = response['data'];
@@ -113,8 +117,14 @@ export class FoodViewPage {
         this.cart.get('price').setValue(json['price']);
         this.price = json['price'];
         this.amount = json['price'];
+        for (let i = 0; i <= ( response['data'].length - 1 ); i++) {
+          if (response['data'][i] !== null && response['data'][i] !== '')
+          this.arrprice[ response['data'][i]['id'] ] = response['data'][i];
+        }
+        //this.txtres = JSON.stringify( this.arrprice );
         //alert('pricelist : ' + this.restourant);
       }
+      this.loading.dismissAll();
     })
   }
 
@@ -129,21 +139,28 @@ export class FoodViewPage {
     this.amount = amount;
     this.cart.get('amount').setValue( amount );
   }
-  doPrice(){
-    let json = this.pricelist[0];
-    this.restourant = json['id'];
-    this.cart.get('restourant_id').setValue(json['restourant_id']);
-    this.cart.get('restourant_name').setValue(json['restourant']);
-    this.cart.get('price').setValue(json['price']);
+  doPrice(json){
+    this.restourant = json.id;
+    this.cart.get('restourant_id').setValue(json.restourant_id);
+    this.cart.get('restourant_name').setValue(json.restourant);
+    this.cart.get('price').setValue(json.price);
+    this.cart.get('price_id').setValue(json.id);
     let qty = this.cart.get('quantity').value;
-    this.price = json['price'];
-    this.amount = json['price'] * qty;
+    this.price = json.price;
+    this.amount = json.price * qty;
     this.cart.get('amount').setValue( this.amount );
-
   }
 
-  doCart(){
-    alert('comming soon...');
+  doSubmit(){
+    this.loading.present();
+    if( this.action == 'new'){
+      this.insertRecord();
+    }
+    if( this.action == 'update'){
+      this.updateRecord();
+    }
+    this.navCtrl.setRoot( CheckoutPage );
+    //alert('comming soon...');
   }
 
   currentDate() {
@@ -154,9 +171,14 @@ export class FoodViewPage {
   /* ======================================================================================== */
   createTable(){
     this.qr.db().then((db:SQLiteObject) =>{
+      /*
+      db.executeSql("DROP TABLE " + this.table ,{}).then(()=>{
+        alert('delete exit');
+      });
+      */
       db.executeSql("CREATE TABLE IF NOT EXISTS " + this.table +" (id INTEGER PRIMARY KEY AUTOINCREMENT, userId INTEGER, userName TEXT, price_id INTEGER, category_id INTEGER, food_id INTEGER, food_name TEXT, restourant_id INTEGER, restourant_name TEXT, quantity INTEGER, price DOUBLE, amount DOUBLE, remark TEXT, created_at TEXT, updated_at TEXT)",{}).then(
         (data) =>{
-          this.txtres = 'Create table orderlist ready';
+          //this.txtres = 'Create table orderlist ready';
         },(error) => {
           this.txtres = 'Error cannot Create Table ' + JSON.stringify(error);
         });
@@ -168,29 +190,33 @@ export class FoodViewPage {
 
   insertRecord(){
     this.qr.db().then((db:SQLiteObject) =>{
-      db.executeSql('INSERT INTO ' + this.table +' (userId, userName, price_id, category_id, food_id, food_name, restourant_id, restourant_name, quantity, price, amount, food_remark, created_at) VALUE (?,?,?,?,?,?,?,?,?,?,?,?,?)', [ 
-        this.cart.get('userId'),
-        this.cart.get('userName'), 
+      db.executeSql('INSERT INTO ' + this.table +' (userId, userName, price_id, category_id, food_id, food_name, restourant_id, restourant_name, quantity, price, amount, remark, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [ 
+        this.cart.get('userId').value,
+        this.cart.get('userName').value, 
         this.cart.get('price_id').value,
         this.cart.get('category_id').value, 
         this.cart.get('food_id').value, 
-        this.cart.get('food_name'),
-        this.cart.get('restourant_id'),
-        this.cart.get('restourant_name'),
-        this.cart.get('quantity'),
-        this.cart.get('price'),
-        this.cart.get('amount'),
-        this.cart.get('remark'),
-        this.currentDate(),
+        this.cart.get('food_name').value,
+        this.cart.get('restourant_id').value,
+        this.cart.get('restourant_name').value,
+        this.cart.get('quantity').value,
+        this.cart.get('price').value,
+        this.cart.get('amount').value,
+        this.cart.get('remark').value,
+        this.currentDate()
         ]).then((data) => {
-
+            this.loading.dismissAll();
         },
         (error) => {
-            alert('Error \nCannot insert record');
+            alert('Error \nCannot insert record' + JSON.stringify( error ));
         });
     },(error) => {
         alert('Error \n' + JSON.stringify(error));
     });
+  }
+
+  updateRecord(){
+
   }
 
 

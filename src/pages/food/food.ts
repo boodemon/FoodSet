@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FoodViewPage } from '../food-view/food-view';
 import { CategoryPage } from '../category/category';
+import { CheckoutPage } from '../checkout/checkout';
 
 /**
  * Generated class for the FoodPage page.
@@ -61,8 +62,9 @@ export class FoodPage {
     this.navCtrl.setRoot( CategoryPage );
   }
 
-  doCart() {
-    alert('comming soon...');
+  goCart() {
+    this.loading.present();
+    this.navCtrl.setRoot( CheckoutPage );
   }
 
 }

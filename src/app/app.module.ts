@@ -24,6 +24,7 @@ import { ProfilePageModule } from '../pages/profile/profile.module';
 import { CategoryPageModule } from '../pages/category/category.module';
 import { FoodPageModule } from '../pages/food/food.module';
 import { FoodViewPageModule } from '../pages/food-view/food-view.module';
+import { CheckoutPageModule } from '../pages/checkout/checkout.module';
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
 import { QueryProvider } from '../providers/query/query';
@@ -53,6 +54,7 @@ import { QueryProvider } from '../providers/query/query';
     ProfilePageModule,
     FoodPageModule,
     FoodViewPageModule,
+    CheckoutPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

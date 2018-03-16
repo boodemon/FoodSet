@@ -7,12 +7,21 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>history</ion-title>
+    <ion-title>ORDER HISTORY</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <form [formGroup]="group">
+  <ion-list>
+    <ion-item>
+      <ion-select  interface="popover" formControlName="opt">
+        <ion-option  *ngFor="let price of pricelist; let i = index;" [value]="price.id" (ionSelect)="doOption(price)" >{{ price.name }}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  </form>
+  <p>{{ result }}</p>
 </ion-content>

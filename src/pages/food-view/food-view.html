@@ -33,14 +33,14 @@
           <ion-col col-8>
             <ion-list>
               <ion-item>
-                <ion-select formControlName="price_id" interface="popover" (change)="doPrice()">
-                  <ion-option *ngFor="let price of pricelist; let i = index;" [value]="price.id">{{ price.restourant }} index is{{ price.id }}</ion-option>
+                <ion-select formControlName="price_id" interface="popover">
+                  <ion-option (ionSelect)="doPrice(price)" *ngFor="let price of pricelist; let i = index;" [value]="price.id">{{ price.restourant }}</ion-option>
                 </ion-select>
               </ion-item>
             </ion-list>
           </ion-col>
         </ion-row>
-        <ion-row>
+        <ion-row> 
           <ion-col col-4>
             <ion-item>
               <ion-label fixed>Quantity</ion-label>
@@ -77,7 +77,7 @@
             <button ion-button color="light" type="button" full (click)="goFood(row.category_id)">Back</button>
           </ion-col>
           <ion-col col-6>
-            <button ion-button color="defult" type="submit"  (click)="doCart">ADD CART</button>
+            <button ion-button color="defult" type="submit" full >ADD CART</button>
           </ion-col>
         </ion-row>
       </ion-grid>

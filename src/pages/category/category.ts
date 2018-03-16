@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FoodPage } from '../food/food';
 import { CreateOrderPage } from '../create-order/create-order';
+import { CheckoutPage } from '../checkout/checkout';
 
 /**
  * Generated class for the CategoryPage page.
@@ -39,10 +40,12 @@ export class CategoryPage {
   });
 
   getCategory(){
+    this.preload.present();
     this.http.get( this.auth.api() + '/category?token=' + this.auth.token() ).subscribe((data) => {
       this.img_path = data['img_path'];
       this.rows = data['data'];
       console.log('data rows ', this.rows );
+      this.preload.dismissAll();
     },err =>{
     })
   }
@@ -50,8 +53,13 @@ export class CategoryPage {
   goFood(id){
     this.navCtrl.push(FoodPage,{category_id:id});
   }
+  
   goCreate() {
     this.navCtrl.setRoot(CreateOrderPage);
   }
 
+  goCart() {
+    this.preload.present();
+    this.navCtrl.setRoot(CheckoutPage);
+  }
 }

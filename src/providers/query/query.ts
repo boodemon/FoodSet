@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { SQLite } from '@ionic-native/sqlite';
 
 /*
   Generated class for the QueryProvider provider.
@@ -17,7 +17,7 @@ export class QueryProvider {
 
   db(){
     return this.sqlite.create({
-      name:'conference.db',
+      name:'setconference.db',
       location:'default'
     });
   }
