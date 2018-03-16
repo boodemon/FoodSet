@@ -48,7 +48,7 @@
     </ion-row>
     <ion-row *ngFor="let fd of lists; let i = index;" class="tb-detail">
       <ion-col col-1>{{ i+1 }}</ion-col>
-      <ion-col col-4>{{ fd.food_name }}<span *ngIf="fd.remark!=''"><br>{{ fd.remark }}</span></ion-col>
+      <ion-col col-4>{{ fd.food_name }}<span *ngIf="fd.remark!=''"><br>*{{ fd.remark }}</span></ion-col>
       <ion-col col-2 text-right>{{ fd.price }}</ion-col>
       <ion-col col-2 text-center>{{ fd.quantity }}</ion-col>
       <ion-col col-2 text-right>{{ fd.amount }}</ion-col>
