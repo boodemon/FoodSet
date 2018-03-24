@@ -25752,6 +25752,22 @@ page-checkout .tb-detail .col {
   border: .5px solid #000;
 }
 
+page-checkout .tb-detail .item {
+  padding: 0;
+  margin: 0;
+}
+
+page-checkout .tb-detail .item ion-input {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+page-checkout .tb-total .col {
+  border: .5px solid #000;
+  font-weight: bold;
+}
+
 page-create-order .item-md {
   padding: 0;
   border: 0;
@@ -26001,6 +26017,15 @@ page-login .grid .row .padding-right-0 {
   padding-right: 0px;
 }
 
+page-payment .item-md {
+  background: transparent;
+  color: #000;
+}
+
+page-payment .item-md p {
+  color: #000;
+}
+
 page-register .btn-send .button-md {
   background: #f8b318;
   color: #010101;
@@ -26111,4 +26136,33 @@ page-register .btn-reg .button-md {
 page-register .btn-reg .button-md:hover:not(.disable-hover) {
   background: #010101;
   color: #fff;
+}
+
+page-track .card {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  border: 1px solid #000;
+}
+
+page-track .card .card-header {
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
+
+page-track .card .card-header p {
+  color: #464646;
+}
+
+page-track .card .card-header .badge {
+  position: absolute;
+  right: 15px;
+  top: 25%;
+  text-transform: uppercase;
+}
+
+page-track .card .card-content {
+  border-top: 1px solid #000;
 }

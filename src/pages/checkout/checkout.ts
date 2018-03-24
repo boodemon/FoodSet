@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController,AlertController, Platform } from 'ionic-angular';
 import { SQLiteObject } from '@ionic-native/sqlite';
+import { HttpClient } from '@angular/common/http';
 
 // Provider include //
 import { AuthProvider } from '../../providers/auth/auth';
 import { QueryProvider } from '../../providers/query/query';
 import { CategoryPage } from '../category/category';
+import { TrackPage } from '../track/track';
 /**
  * Generated class for the CheckoutPage page.
  *
@@ -22,15 +24,20 @@ export class CheckoutPage {
   head:any = {};
   lists:any=[];
   res:string = '';
+  total:number = 0;
+  qtys:number =0;
+  qtyModel:any=[];
+  amountModel:any=[];
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public loader:LoadingController,
-    public altCtrl:AlertController,
+    public alertCtrl:AlertController,
     public auth:AuthProvider,
     public qr:QueryProvider,
-    public platform:Platform
+    public platform:Platform,
+    private http:HttpClient
   ) {
     auth.online();
     this.platform.ready().then(() =>{
@@ -45,12 +52,94 @@ export class CheckoutPage {
     this.detail();
   }
 
+  loading = this.loader.create({
+    content: 'Loading ...',
+    dismissOnPageChange: true,
+
+  });
+
   goContinue(){
     this.navCtrl.setRoot( CategoryPage );
   }
 
   goPayment(){
+    let confirm = this.alertCtrl.create({
+      title: 'CHECKOUT CONFIRM',
+      message: 'Please confirm to checkout ? ',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.recordOrder();
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+  recordOrder(){
+    let param = {
+        onHead : this.head,
+        onList : this.lists,
+        _method: 'POST',
+        'token': this.auth.token
+    };
+    this.loading.present();
+    this.http.post( this.auth.api() + '/order', param ).subscribe( (data) =>{
+      this.loading.dismissAll();
+      let alert = this.alertCtrl.create({
+        title: 'SUCCESSFUL',
+        subTitle: 'ทำการส่ง Order ไปยังเจ้าหน้าที่เรียบร้อยแล้ว และจะทำการติดต่อกลับเร็ว ๆ นี้',
+        buttons: ['OK']
+      });
+      alert.present();
+      this.clearOrder();
+      this.navCtrl.setRoot(TrackPage );
+    },
+    (error) =>{
+        alert('Error\nCannot record order please try again' + JSON.stringify(error));
+        this.loading.dismissAll();
+    })
+    
+  }
+  calTotal( rows ){
+    let total = 0;
+    let qty   = 0;
+    for(let i = 0; i < rows.length; i++){
+      let item = rows[i];
+      let quantity = this.qtyModel[i];
+      let amount = parseFloat(item.price) * parseFloat( quantity );
+      this.amountModel[i] = amount;
+      total += amount;
+      qty   += item.quantity;
+    }
+    this.total = total;
+    this.qtys = qty;
 
+  }
+  calPrice(v){
+    let total = 0;
+    let qty = 0;
+    let rows = this.lists;
+    for (let i = 0; i < rows.length; i++) {
+      let item = rows[i];
+      let quantity = v == i ? this.qtyModel[v] : this.qtyModel[i];
+
+      this.lists[i].quantity = quantity;
+      this.qtys += quantity;
+      let amount = parseFloat(item.price) * parseFloat(quantity);
+      this.amountModel[i] = amount;
+      total += amount;
+      qty += item.quantity;
+    }
+    this.total = total;
+    this.qtys = qty;
   }
   // Qeury Header and order list //
   // ==================================================================================//
@@ -87,8 +176,12 @@ export class CheckoutPage {
         let len = data.rows.length;
         if( len > 0 ){
           for( let i = 0; i < len; i++ ){
-            this.lists.push( data.rows.item(i) );
+            let item = data.rows.item(i);
+            this.lists.push( item );
+            this.qtyModel[i] = item.quantity
           }
+          //alert('quantitn = ' + JSON.stringify( this.qtyModel ) );
+          this.calTotal( this.lists );
         }
           //this.lists = data.rows;
         this.res += ' | orderlist table ' + JSON.stringify(this.lists );
@@ -99,6 +192,20 @@ export class CheckoutPage {
       });
     },(error) =>{
       alert('Cannot connect database ' + JSON.stringify( error ) );
+    });
+  }
+  clearOrder(){
+    this.qr.db().then((db: SQLiteObject) => {
+      db.executeSql("DELETE FROM orders", {}).then((data) => {},
+      (error) => { alert('Cannot read table orderlist ' + JSON.stringify(error)); });
+    }, (error) => {
+      alert('Cannot connect database ' + JSON.stringify(error));
+    });
+    this.qr.db().then((db: SQLiteObject) => {
+      db.executeSql("DELETE FROM orderlist", {}).then((data) => {},
+      (error) => { alert('Cannot read table orderlist ' + JSON.stringify(error)); });
+    }, (error) => {
+      alert('Cannot connect database ' + JSON.stringify(error));
     });
   }
 

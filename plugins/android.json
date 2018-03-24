@@ -41,11 +41,16 @@
     },
     "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "com.setconference.tigerwealth"
-    }
-  },
-  "dependent_plugins": {
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.setconference.tigerwealth"
+    },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "com.setconference.tigerwealth"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.setconference.tigerwealth"
     }
-  }
+  },
+  "dependent_plugins": {}
 }

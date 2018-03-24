@@ -7,12 +7,36 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>track</ion-title>
+    <ion-title>TRACKING ORDER</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-card *ngFor="let order of orders; let i=index;">
+    <ion-card-header>
+        <ion-icon name="ios-cart-outline"></ion-icon> Order No. #{{ order.code }}
+        <p><small>{{ order.created_at | date:'dd MMM yyyy' }}</small></p>
+        <ion-badge color="dark">{{ order.status }}</ion-badge>
+    </ion-card-header>
+    <ion-card-content *ngIf="order.tracking.length > 0">
+      <h4>TRACKING STATUS</h4>
+      <hr>
+      <ion-list>
+        <ion-grid>
+          <ion-row *ngFor="let track of order.tracking; let x=index;">
+            <ion-col col-4>{{ track.created_at | date:'dd MMM yyyy' }}</ion-col>
+            <ion-col col-8>
+              {{ track.tracking_name }}
+              <p *ngIf="order.status == 'new'&&x==0">
+                <button ion-button color="dark" (click)="doConfirmation(order.id)" full >แจ้งชำระเงิน</button>
+              </p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-item text-center *ngIf="orders.length == 0"><h2>No order tracking.</h2></ion-item>
 </ion-content>

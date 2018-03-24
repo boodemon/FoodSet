@@ -10,6 +10,9 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { NativeStorage }from '@ionic-native/native-storage';
 import { SQLite } from '@ionic-native/sqlite';
 import { DatePicker } from '@ionic-native/date-picker';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
 
 import { MyApp }        from './app.component';
 import { HomePage }     from '../pages/home/home';
@@ -25,6 +28,7 @@ import { CategoryPageModule } from '../pages/category/category.module';
 import { FoodPageModule } from '../pages/food/food.module';
 import { FoodViewPageModule } from '../pages/food-view/food-view.module';
 import { CheckoutPageModule } from '../pages/checkout/checkout.module';
+import { PaymentPageModule } from '../pages/payment/payment.module';
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
 import { QueryProvider } from '../providers/query/query';
@@ -54,7 +58,8 @@ import { QueryProvider } from '../providers/query/query';
     ProfilePageModule,
     FoodPageModule,
     FoodViewPageModule,
-    CheckoutPageModule
+    CheckoutPageModule,
+    PaymentPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,7 +76,12 @@ import { QueryProvider } from '../providers/query/query';
     NativeStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
-    QueryProvider
+    QueryProvider,
+    FileTransfer,
+    
+    FileTransferObject,
+    File,
+    Camera
   ]
 })
 export class AppModule {}
