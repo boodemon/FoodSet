@@ -7,17 +7,17 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>CONFIRM PAYMENT</ion-title>
+    <ion-title>PAYMENT</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding>
-    <h5>CONFIRMATION ORDER</h5>
+<ion-content>
+    <h5>CONFIRMATION ORDER #{{ order.code }}</h5>
     <hr/>
 
-  <form (ngSubmit)="doSubmit()">
-      <ion-list radio-group>
+  <form (ngSubmit)="doSubmit()" [formGroup]="frmConfirm">
+      <ion-list radio-group formControlName="bank">
             <ion-item *ngFor="let b of banks; let i=index;">
               <ion-label>
                 <p>ชื่อบัญชี <strong>{{ b.bank_account }}</strong></p>
@@ -27,34 +27,52 @@
                 <p>สาขา : <strong>{{ b.bank_branch }}</strong></p>
 
               </ion-label>
-              <ion-radio color="default" item-left value="{{ b.id }}" [(ngModel)]="pay.bank"></ion-radio>
+              <ion-radio color="default" item-left value="{{ b.id }}"></ion-radio>
               <hr/>
             </ion-item>
+            <div *ngIf="frmConfirm.controls['bank'].invalid && (frmConfirm.controls['bank'].dirty || frmConfirm.controls['bank'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="frmConfirm.controls['bank'].errors.required">
+                *Please checked bank.
+              </div>
+            </div>
       </ion-list>
 
       <ion-list>
           <ion-item>          
               <ion-label stacked>Subject</ion-label>
-              <ion-input type="text" [(ngModel)]="pay.subject" ></ion-input>
+              <ion-input type="text" formControlName="subject" ></ion-input>
           </ion-item>
+          <div *ngIf="frmConfirm.controls['subject'].invalid && (frmConfirm.controls['subject'].dirty || frmConfirm.controls['subject'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="frmConfirm.controls['subject'].errors.required">
+              *Please enter Subject.
+            </div>
+          </div>
           <ion-item>
               <ion-label stacked>Message</ion-label>
-              <ion-textarea type="text" [(ngModel)]="pay.message" ></ion-textarea>
+              <ion-textarea type="text" formControlName="message" ></ion-textarea>
           </ion-item>
+          <div *ngIf="frmConfirm.controls['message'].invalid && (frmConfirm.controls['message'].dirty || frmConfirm.controls['message'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="frmConfirm.controls['message'].errors.required">
+              *Please enter Message.
+            </div>
+          </div>
           <ion-item>
-              <p>{{imageURI}}</p>
+              <p><img src="{{imageURI}}" *ngIf="isPreview" /></p>
               <p>
-                  <button ion-button full color="default" (click)="getAttach()">ATTACH FILE</button>
+                  <button ion-button full color="default" type="button" (click)="getAttach()">ATTACH FILE</button>
               </p>
           </ion-item>
       </ion-list>
       <ion-grid>
         <ion-row>
           <ion-col col-6>
-            <button ion-button color="defult" full (click)="goContinue()">SUBMIT</button>
+            <button ion-button color="light" type="button" full (click)="doCancel()">CANCEL</button>
           </ion-col>
           <ion-col col-6>
-            <button ion-button color="light" full (click)="doDimis()">CANCEL</button>
+            <button ion-button color="defult" type="submit" full  [disabled]="!frmConfirm.valid" >SUBMIT</button>
           </ion-col>
         </ion-row>
       </ion-grid>

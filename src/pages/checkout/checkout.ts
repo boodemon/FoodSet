@@ -96,11 +96,17 @@ export class CheckoutPage {
       let alert = this.alertCtrl.create({
         title: 'SUCCESSFUL',
         subTitle: 'ทำการส่ง Order ไปยังเจ้าหน้าที่เรียบร้อยแล้ว และจะทำการติดต่อกลับเร็ว ๆ นี้',
-        buttons: ['OK']
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              this.clearOrder();
+              this.navCtrl.setRoot(TrackPage );
+            }
+          }
+        ]
       });
       alert.present();
-      this.clearOrder();
-      this.navCtrl.setRoot(TrackPage );
     },
     (error) =>{
         alert('Error\nCannot record order please try again' + JSON.stringify(error));
@@ -140,6 +146,36 @@ export class CheckoutPage {
     }
     this.total = total;
     this.qtys = qty;
+  }
+  removeRow(id){
+    let confirm = this.alertCtrl.create({
+      title: 'DELETE CONFIRM',
+      message: 'Please confirm to delete ? ',
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {
+            console.log('Disagree clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+
+          this.qr.db().then((db:SQLiteObject) =>{
+            db.executeSql('DELETE FROM orderlist WHERE id=?',[id]).then((data) =>{
+                this.detail();
+                this.navCtrl.setRoot( CheckoutPage);
+            },
+            (error) =>{
+              alert('Error!!\nCannot delete record this please try again.');
+            })
+          });
+                }
+              }
+            ]
+    });
+    confirm.present();
   }
   // Qeury Header and order list //
   // ==================================================================================//

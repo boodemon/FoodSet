@@ -1,9 +1,12 @@
 page-track {
+    .bar-button-md[icon-only]{
+        width:26px;
+        margin-right:10px;
+    }
     .card{
         padding:0;
         background:transparent;
         border:0;
-        width:100%;
         border:1px solid #000;
         .card-header{
             padding:10px;
@@ -20,7 +23,19 @@ page-track {
             }
         }
         .card-content{
-            border-top: 1px solid #000;
+            border-top: 1px solid rgba(0,0,0,.2);
+            padding-top:10px;
+            .attach-panel{
+                border-top:1px dashed #000;
+            }
+            .row{
+                padding:0;
+                margin-bottom:10px;
+                border-bottom:1px solid #000;
+            }
+            .row:last-child{
+                border-bottom:0;
+            }
         }
     }
 }

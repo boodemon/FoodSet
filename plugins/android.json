@@ -10,6 +10,9 @@
     "cordova-plugin-advanced-http": {
       "PACKAGE_NAME": "com.setconference.tigerwealth"
     },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.setconference.tigerwealth"
+    },
     "cordova-plugin-datepicker": {
       "PACKAGE_NAME": "com.setconference.tigerwealth"
     },
@@ -19,6 +22,12 @@
     "cordova-plugin-facebook4": {
       "APP_ID": "2018552691718690",
       "APP_NAME": "Set Conference",
+      "PACKAGE_NAME": "com.setconference.tigerwealth"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.setconference.tigerwealth"
+    },
+    "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.setconference.tigerwealth"
     },
     "cordova-plugin-googleplus": {
@@ -40,15 +49,6 @@
       "PACKAGE_NAME": "com.setconference.tigerwealth"
     },
     "ionic-plugin-keyboard": {
-      "PACKAGE_NAME": "com.setconference.tigerwealth"
-    },
-    "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.setconference.tigerwealth"
-    },
-    "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.setconference.tigerwealth"
-    },
-    "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.setconference.tigerwealth"
     }
   },

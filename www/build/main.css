@@ -25946,6 +25946,72 @@ page-forgot .btn-send .button-md:hover:not(.disable-hover) {
   color: #f8b318;
 }
 
+page-history .item-md {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+page-history .item-md.item-block .item-inner {
+  padding-right: 0;
+  border-bottom: 0;
+}
+
+page-history .item-label-stacked ion-datetime, page-history .item-label-floating ion-datetime {
+  padding-left: 10px;
+  width: 100%;
+  background: #fff;
+  border-radius: 4px;
+}
+
+page-history .status {
+  text-transform: uppercase;
+}
+
+page-history .card {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  width: 100%;
+  border: 1px solid #000;
+}
+
+page-history .card .card-header {
+  padding: 10px;
+  position: relative;
+  width: 100%;
+}
+
+page-history .card .card-header p {
+  color: #464646;
+}
+
+page-history .card .card-header .badge {
+  position: absolute;
+  right: 15px;
+  top: 25%;
+  text-transform: uppercase;
+}
+
+page-history .card .card-content {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
+}
+
+page-history .card .card-content .attach-panel {
+  border-top: 1px dashed #000;
+}
+
+page-history .card .card-content .row {
+  padding: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+
+page-history .card .card-content .row:last-child {
+  border-bottom: 0;
+}
+
 page-login {
   background: #f8b318;
 }
@@ -26023,6 +26089,33 @@ page-payment .item-md {
 }
 
 page-payment .item-md p {
+  color: #000;
+}
+
+page-profile .item-md {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+page-profile .item-md p {
+  color: #000;
+}
+
+page-profile .item-md.item-block .item-inner {
+  padding-right: 0;
+  border-bottom: 0;
+  margin-bottom: 10px;
+}
+
+page-profile .item-label-stacked ion-datetime, page-profile .item-label-floating ion-datetime {
+  padding-left: 10px;
+  width: 100%;
+  background: #fff;
+  border-radius: 4px;
+}
+
+page-profile p {
   color: #000;
 }
 
@@ -26138,11 +26231,15 @@ page-register .btn-reg .button-md:hover:not(.disable-hover) {
   color: #fff;
 }
 
+page-track .bar-button-md[icon-only] {
+  width: 26px;
+  margin-right: 10px;
+}
+
 page-track .card {
   padding: 0;
   background: transparent;
   border: 0;
-  width: 100%;
   border: 1px solid #000;
 }
 
@@ -26164,5 +26261,49 @@ page-track .card .card-header .badge {
 }
 
 page-track .card .card-content {
-  border-top: 1px solid #000;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
+}
+
+page-track .card .card-content .attach-panel {
+  border-top: 1px dashed #000;
+}
+
+page-track .card .card-content .row {
+  padding: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #000;
+}
+
+page-track .card .card-content .row:last-child {
+  border-bottom: 0;
+}
+
+page-view-order .tb-head .col {
+  font-weight: bold;
+  text-align: center;
+  border: .5px solid #fff;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+}
+
+page-view-order .tb-detail .col {
+  border: .5px solid #000;
+}
+
+page-view-order .tb-detail .item {
+  padding: 0;
+  margin: 0;
+}
+
+page-view-order .tb-detail .item ion-input {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+page-view-order .tb-total .col {
+  border: .5px solid #000;
+  font-weight: bold;
 }

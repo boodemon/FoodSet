@@ -1,3 +1,28 @@
 page-profile {
+    .item-md{
+        padding:0;
+        border: 0;
+        background:transparent;
+        p{
+            color:#000;
+        }
+    }
 
+    .item-md.item-block{
+        .item-inner{
+            padding-right:0;
+            border-bottom:0;
+            margin-bottom:10px;
+        } 
+    }
+
+    .item-label-stacked ion-datetime, .item-label-floating ion-datetime {
+        padding-left: 10px;
+        width: 100%;
+        background:$white;
+        border-radius: 4px;
+    }
+    p{
+        color:#000;
+    }
 }

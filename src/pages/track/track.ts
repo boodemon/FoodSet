@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams,LoadingController,ModalController }
 import { HttpClient } from '@angular/common/http';
 
 import { AuthProvider } from '../../providers/auth/auth';
-import { PaymentPage } from '../payment/payment'
+import { PaymentPage } from '../payment/payment';
+import { ViewOrderPage } from '../view-order/view-order';
+import { DashboardPage } from '../dashboard/dashboard';
 
 /**
  * Generated class for the TrackPage page.
@@ -34,32 +36,44 @@ export class TrackPage {
     console.log('ionViewDidLoad TrackPage');
     this.getTrack();
   }
+  loading = this.loader.create({
+    content: 'Loading ...',
+    dismissOnPageChange: true,
+
+  });
 
   getTrack(){
-    let param = '?token=' + this.auth.token() + '&status=new';
+    this.loading.present();
+    let param = '?token=' + this.auth.token() + '&status=processing';
     this.http.get( this.auth.api() + '/order' + param ).subscribe((res) => {
       let code = res['code'];
       console.log('tracking code = ' + code );
       console.log('tracking data = ', res['data']);
       if( code == 200 ){
         this.orders = res['data'];
+        this.loading.dismissAll();
+      }else{ 
+         this.loading.dismissAll();
       }
+     
     },
     (error) => {
       alert('Error!!\nCannot load order tracking' + JSON.stringify( error ) );
+      this.loading.dismissAll();
     });
   }
-  paid = this.pop.create( PaymentPage );
   
   doConfirmation(id){
-    this.paid.present();
-  }
-  doDimis() {
-    this.paid.dismiss();
+    let paid = this.pop.create( PaymentPage ,{order_id:id});
+    paid.present();
   }
 
   viewOrder(id){
-
+    let view = this.pop.create( ViewOrderPage ,{order_id:id});
+    view.present();
+  }
+  goHome(){
+    this.navCtrl.setRoot( DashboardPage );
   }
 
 }

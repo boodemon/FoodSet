@@ -7,12 +7,46 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>profile</ion-title>
+    <ion-title>PROFILE</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-grid>
+      <ion-row>
+          <ion-col><strong>Name : </strong> {{ user.name }}</ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col><strong>Username : </strong> {{ user.username }}</ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col><strong>E-mail : </strong> {{ user.email }}</ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col><strong>Tel : </strong> {{ user.tel }}</ion-col>
+      </ion-row>
+  </ion-grid>
+
+  <h4>Change Password</h4>
+  <hr>
+  <form (ngSubmit)="doChange()" [formGroup]="gpass">
+      <ion-list>   
+        <ion-item>
+          <ion-label color="dark" stacked>Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label color="dark" stacked>Confirm Password</ion-label>
+          <ion-input type="password"  formControlName="password_confirmation" ></ion-input>
+        </ion-item>
+
+          <div class="btn-reg">
+            <button color="dark" ion-button full type="submit"> Change Password</button>
+          </div>
+      </ion-list>
+  </form>
 
 </ion-content>

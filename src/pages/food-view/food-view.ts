@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import { FormBuilder, Validators,FormGroup} from '@angular/forms';
@@ -45,7 +45,6 @@ export class FoodViewPage {
       public navParams: NavParams,
       private http: HttpClient,
       private auth:AuthProvider,
-      private platform:Platform,
       private loader:LoadingController,
       private frm: FormBuilder,
       private qr: QueryProvider
@@ -54,22 +53,19 @@ export class FoodViewPage {
     this.auth.online();
     this.createForm();
     
-    this.platform.ready().then(()=>{
-      this.createTable();
-    });
-    
   }
 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodViewPage');
+    //this.checkRecord();
     this.getFood();
     this.prices();
   }
   createForm() {
     this.cart = this.frm.group({
       'userId': [this.user.id],
-      'userName': [this.user.name],
+      'userName': [this.user.username],
       'price_id': ['', Validators.required],
       'category_id': [''],
       'food_id': [''],
@@ -91,14 +87,17 @@ export class FoodViewPage {
 
   getFood(){
     this.loading.present();
+    this.checkRecord();
     return this.http.get( this.auth.api() + '/food/' + this.food_id +'?token=' + this.auth.token() ).subscribe((response) =>{
       console.log( 'food response : ', response );
       if( response['code'] == 200){
           this.row = response['data'];
           let json = this.row;
-        this.cart.get('category_id').setValue(json['category_id']);
-        this.cart.get('food_id').setValue(json['id']);
-        this.cart.get('food_name').setValue(json['food_name']);
+          if( this.action == 'new'){
+              this.cart.get('category_id').setValue(json['category_id']);
+              this.cart.get('food_id').setValue(json['id']);
+              this.cart.get('food_name').setValue(json['food_name']);
+          }
       }
       this.loading.dismissAll();
     })
@@ -169,25 +168,6 @@ export class FoodViewPage {
   }
   // Manage SQLite 
   /* ======================================================================================== */
-  createTable(){
-    this.qr.db().then((db:SQLiteObject) =>{
-      /*
-      db.executeSql("DROP TABLE " + this.table ,{}).then(()=>{
-        alert('delete exit');
-      });
-      */
-      db.executeSql("CREATE TABLE IF NOT EXISTS " + this.table +" (id INTEGER PRIMARY KEY AUTOINCREMENT, userId INTEGER, userName TEXT, price_id INTEGER, category_id INTEGER, food_id INTEGER, food_name TEXT, restourant_id INTEGER, restourant_name TEXT, quantity INTEGER, price DOUBLE, amount DOUBLE, remark TEXT, created_at TEXT, updated_at TEXT)",{}).then(
-        (data) =>{
-          //this.txtres = 'Create table orderlist ready';
-        },(error) => {
-          this.txtres = 'Error cannot Create Table ' + JSON.stringify(error);
-        });
-    },
-    (error) => {
-        this.txtres = 'Error cannot Create Database ' + JSON.stringify( error );
-    });
-  }
-
   insertRecord(){
     this.qr.db().then((db:SQLiteObject) =>{
       db.executeSql('INSERT INTO ' + this.table +' (userId, userName, price_id, category_id, food_id, food_name, restourant_id, restourant_name, quantity, price, amount, remark, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [ 
@@ -216,8 +196,61 @@ export class FoodViewPage {
   }
 
   updateRecord(){
-
+    this.qr.db().then((db: SQLiteObject) => {
+      db.executeSql("UPDATE " + this.table  + " SET userId = '" + this.cart.get('userId').value + "', "
+                                            + "userName = '" + this.cart.get('userName').value + "', "
+                                            + "price_id = '" + this.cart.get('price_id').value + "', "
+                                            + "category_id = '" + this.cart.get('category_id').value + "', "
+                                            + "food_id = '" + this.cart.get('food_id').value + "', "
+                                            + "food_name = '" + this.cart.get('food_name').value + "', "
+                                            + "restourant_id = '" + this.cart.get('restourant_id').value + "', "
+                                            + "restourant_name = '" + this.cart.get('restourant_name').value + "', "
+                                            + "quantity = '" + this.cart.get('quantity').value + "', "
+                                            + "price = '" + this.cart.get('price').value + "', "
+                                            + "amount = '" + this.cart.get('amount').value + "', "
+                                            + "remark = '" + this.cart.get('remark').value + "', "
+                                            + "updated_at = '" + this.currentDate() + "'"
+                             + " WHERE food_id = ?", [ this.food_id ]).then((data) => {
+        this.loading.dismissAll();
+      },
+        (error) => {
+          alert('Error \nCannot insert record' + JSON.stringify(error));
+        });
+    }, (error) => {
+      alert('Error \n' + JSON.stringify(error));
+    });
   }
 
+  checkRecord(){
+    let price_id = this.cart.get('price_id').value;
+    this.qr.db().then((db:SQLiteObject) =>{
+      db.executeSql('SELECT * FROM ' + this.table + ' WHERE price_id =?',[price_id]).then((data) =>{
+        let len = parseInt( data.rows.length );
+        let txt = 'length = ' + len ;
+        if (  len > 0 ) {
+            let item = data.rows.item(0);
+            this.action = 'update';
+            this.cart.get('restourant_id').setValue(item.restourant_id);
+            this.cart.get('restourant_name').setValue(item.restourant_name);
+            this.cart.get('quantity').setValue(item.quantity);
+            this.cart.get('price').setValue(item.price);
+            this.cart.get('amount').setValue(item.amount);
+            this.cart.get('remark').setValue(item.remark);
+            
+        }else{
+          txt += ' Error row == 0';
+          this.action = 'new';
+        }
+
+        this.txtres = txt + ' Action = ' + this.action;
+      },
+      (error) => {
+        alert( 'Error!!\nCannot open ' + this.table + ' error => ' + JSON.stringify( error ));
+      });
+    },
+    (error) =>{
+      alert('Error!!\nCannot open DATABASE ' + JSON.stringify( error ) );
+    });
+  }
 
 }

@@ -56,7 +56,7 @@
         </ion-item>
       </ion-col>
       <ion-col col-2 text-right >{{ amountModel[i] }}</ion-col>
-      <ion-col col-1  text-right><ion-icon name="ios-trash-outline" (click)="removeRow(fd)" color="red"></ion-icon></ion-col>
+      <ion-col col-1  text-right><ion-icon name="ios-trash-outline" (click)="removeRow(fd.id)" color="red"></ion-icon></ion-col>
     </ion-row>
     <ion-row class="tb-total">
       <ion-col col-7 text-right><strong>Total : </strong></ion-col>

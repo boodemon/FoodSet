@@ -38,6 +38,10 @@ export class AuthProvider {
     return localStorage.getItem('token');
   }
 
+  user(){
+    return localStorage.getItem('user');
+  }
+
   removeToken(){
     localStorage.removeItem('token');
   }
@@ -51,7 +55,13 @@ export class AuthProvider {
   }
   
   online(){
-    this.http.get( this.api() + '/user?token=' + this.token() ).subscribe((res) => {
+    let user = this.user();
+    let token = this.token();
+    if (user === undefined || user === null || token === undefined || token === null){
+      this.logout();
+      location.reload();
+    }
+    this.http.get(this.api() + '/user?token=' + token ).subscribe((res) => {
         let code = res['code'];
         if( code != 200 ){
           alert(res['msg']);

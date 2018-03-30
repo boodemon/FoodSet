@@ -8,16 +8,20 @@
 
   <ion-navbar>
     <ion-title>TRACKING ORDER</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goHome()"><ion-icon name="home"></ion-icon></button>
+      
+    </ion-buttons>
   </ion-navbar>
-
+  
 </ion-header>
 
 
 <ion-content>
   <ion-card *ngFor="let order of orders; let i=index;">
-    <ion-card-header>
+    <ion-card-header (click)="viewOrder(order.id)">
         <ion-icon name="ios-cart-outline"></ion-icon> Order No. #{{ order.code }}
-        <p><small>{{ order.created_at | date:'dd MMM yyyy' }}</small></p>
+        <p><small>{{ order.created_at | date:'dd MMM yyyy HH:mm' }}</small></p>
         <ion-badge color="dark">{{ order.status }}</ion-badge>
     </ion-card-header>
     <ion-card-content *ngIf="order.tracking.length > 0">
@@ -26,17 +30,20 @@
       <ion-list>
         <ion-grid>
           <ion-row *ngFor="let track of order.tracking; let x=index;">
-            <ion-col col-4>{{ track.created_at | date:'dd MMM yyyy' }}</ion-col>
-            <ion-col col-8>
-              {{ track.tracking_name }}
+            <ion-col col-12>
+              <small>{{ track.created_at | date:'dd MMM yyyy HH:mm' }}</small>
+              <p [innerHTML]="track.tracking_name"></p>
               <p *ngIf="order.status == 'new'&&x==0">
                 <button ion-button color="dark" (click)="doConfirmation(order.id)" full >แจ้งชำระเงิน</button>
               </p>
+            </ion-col>
+            <ion-col col-12 class="attach-panel" *ngIf="track.attach" >
+              <p><strong>Attach File</strong></p>
+              <p><img src="{{ track.attach.attach_img }}" /></p>
             </ion-col>
           </ion-row>
         </ion-grid>
       </ion-list>
     </ion-card-content>
   </ion-card>
-  <ion-item text-center *ngIf="orders.length == 0"><h2>No order tracking.</h2></ion-item>
 </ion-content>

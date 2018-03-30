@@ -6,7 +6,7 @@ import { TrackPage } from '../track/track';
 import { ProfilePage } from '../profile/profile';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
-import { PaymentPage } from '../payment/payment';
+import { AboutPage } from '../about/about';
 /**
  * Generated class for the DashboardPage page.
  *
@@ -62,6 +62,7 @@ export class DashboardPage {
   
   goAbout(){
     this.loading.present();
+    this.navCtrl.push( AboutPage );
   }
 
   goLogout() {

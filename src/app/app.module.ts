@@ -10,7 +10,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { NativeStorage }from '@ionic-native/native-storage';
 import { SQLite } from '@ionic-native/sqlite';
 import { DatePicker } from '@ionic-native/date-picker';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 
@@ -29,6 +29,7 @@ import { FoodPageModule } from '../pages/food/food.module';
 import { FoodViewPageModule } from '../pages/food-view/food-view.module';
 import { CheckoutPageModule } from '../pages/checkout/checkout.module';
 import { PaymentPageModule } from '../pages/payment/payment.module';
+import { AboutPageModule } from '../pages/about/about.module';
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
 import { QueryProvider } from '../providers/query/query';
@@ -59,7 +60,8 @@ import { QueryProvider } from '../providers/query/query';
     FoodPageModule,
     FoodViewPageModule,
     CheckoutPageModule,
-    PaymentPageModule
+    PaymentPageModule,
+    AboutPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

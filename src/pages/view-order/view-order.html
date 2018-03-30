@@ -7,12 +7,78 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>view-order</ion-title>
+    <ion-title>ORDER PREVIEW</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <h5>ORDER NO #{{ head.code }}</h5>
+  <hr/>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+        <strong>JOB NAME : </strong>
+      </ion-col>
+      <ion-col col-8>{{ head.jobname }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        <strong>ADDRESS : </strong>
+      </ion-col>
+      <ion-col col-8>{{ head.address }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>
+        <strong>REMARK : </strong>
+      </ion-col>
+      <ion-col col-8>{{ head.remark }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-2>
+        <strong>DATE : </strong>
+      </ion-col>
+      <ion-col col-4>{{ head.jobdate }}</ion-col>
+      <ion-col col-2 text-right>
+        <strong>TIME : </strong>
+      </ion-col>
+      <ion-col col-4>{{ head.jobtime }}</ion-col>
+    </ion-row>
+  </ion-grid>
 
+  <ion-grid>
+    <ion-row class="tb-head">
+      <ion-col col-2>No.</ion-col>
+      <ion-col col-3>Food</ion-col>
+      <ion-col col-2>Price</ion-col>
+      <ion-col col-2>Qty</ion-col>
+      <ion-col col-3>Amount</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let fd of details; let i = index;" class="tb-detail">
+      <ion-col col-2>{{ i+1 }}</ion-col>
+      <ion-col col-3>{{ fd.food_name }}
+        <br>
+        <small>{{ fd.restourant }}</small>
+        <small *ngIf="fd.remark!=''">
+          <br>*{{ fd.remark }}</small>
+      </ion-col>
+      <ion-col col-2 text-right>{{ fd.per_price }}</ion-col>
+      <ion-col col-2 text-center>{{ fd.qty }}</ion-col>
+        
+      <ion-col col-3 text-right>{{ fd.per_price * fd.qty }}</ion-col>
+    </ion-row>
+    <ion-row class="tb-total">
+      <ion-col col-7 text-right>
+        <strong>Total : </strong>
+      </ion-col>
+      <ion-col col-2 text-center>{{ head.qty }}</ion-col>
+      <ion-col col-3 text-right>{{ head.price }}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col col-12>
+          <button ion-button color="light" full (click)="doClose()">Close</button>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

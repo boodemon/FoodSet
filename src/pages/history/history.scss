@@ -1,3 +1,61 @@
 page-history {
+    .item-md{
+        padding:0;
+        border: 0;
+        background:transparent;
+        
+    }
 
+    .item-md.item-block{
+        .item-inner{
+            padding-right:0;
+            border-bottom:0;
+        } 
+    }
+
+    .item-label-stacked ion-datetime, .item-label-floating ion-datetime {
+        padding-left: 10px;
+        width: 100%;
+        background:$white;
+        border-radius: 4px;
+    }
+    .status{
+        text-transform: uppercase;
+    }
+        .card{
+        padding:0;
+        background:transparent;
+        border:0;
+        width:100%;
+        border:1px solid #000;
+        .card-header{
+            padding:10px;
+            position: relative;
+            width:100%;
+            p{
+                color:#464646;
+            }
+            .badge{
+                position: absolute;
+                right: 15px;
+                top:25%;
+                text-transform: uppercase;
+            }
+        }
+        .card-content{
+            border-top: 1px solid rgba(0,0,0,.2);
+            padding-top:10px;
+            .attach-panel{
+                border-top:1px dashed #000;
+            }
+            .row{
+                padding:0;
+                margin-bottom:10px;
+                border-bottom:1px solid #000;
+            }
+            .row:last-child{
+                border-bottom:0;
+            }
+        }
+    }
 }

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,LoadingController , ToastController} from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AuthProvider } from '../../providers/auth/auth';
+import { TrackPage } from '../track/track';
 
 /**
  * Generated class for the PaymentPage page.
@@ -18,34 +19,53 @@ import { AuthProvider } from '../../providers/auth/auth';
   templateUrl: 'payment.html',
 })
 export class PaymentPage {
+  res:string;
   banks:any = [];
+  order:any = [];
   imageURI: any;
   imageFileName: any;
   pay: any = [];
+  isPreview:boolean = false;
+  param:string = '?token=' + this.auth.token();
+  private frmConfirm : FormGroup;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private http: HttpClient,
     private auth: AuthProvider,
-    private transfer: FileTransfer,
     private camera: Camera,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
+    private form: FormBuilder
             ) {
         this.auth.online();
+        this.createForm();
+        
+  }
+  createForm(){
+    this.frmConfirm = this.form.group({
+      'id' : [''],
+      'ref_id' : [this.navParams.get('order_id') ],
+      'bank':['',Validators.required],
+      'subject':['',Validators.required],
+      'message' : ['',Validators.required],
+      'attach':[null],
+      'token' : [this.auth.token()]
+    })
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
-    this.getAll();
+    this.getBank();
+    this.getOrder();
   }
   loading = this.loadingCtrl.create({
     content: 'Loading ...',
     dismissOnPageChange: true,
 
   });
-  getAll(){
-    this.http.get( this.auth.api() + '/bank?token=' + this.auth.token() ).subscribe( (res) =>{
+  getBank(){
+    this.http.get( this.auth.api() + '/bank' + this.param ).subscribe( (res) =>{
         let code = res['code'];
         if( code == 200){
           this.banks = res['data'];
@@ -55,52 +75,65 @@ export class PaymentPage {
         alert('Cannot connect table ' + JSON.stringify( error ) );
     })
   }
+
+  getOrder(){
+    this.loading.present();
+    this.http.get( this.auth.api() + '/order/'+ this.navParams.get('order_id') + this.param ).subscribe( (res) =>{
+        let code = res['code'];
+        if( code == 200){
+          this.order = res['head'];
+          this.frmConfirm.get('subject').setValue('แจ้งยืนยันการชำระเงิน Order no.#' + this.order.code );
+          this.loading.dismissAll();
+        }else{
+           this.loading.dismissAll();
+        }
+       
+    },
+    (error) => {
+        alert('Cannot connect table ' + JSON.stringify( error ) );
+        this.loading.dismissAll();
+    })
+  }
+
   getAttach() {
+
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+      targetWidth: 800,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
     }
 
     this.camera.getPicture(options).then((imageData) => {
-      this.imageURI = imageData;
+      this.imageURI = 'data:image/jpeg;base64,' + imageData;
+      this.frmConfirm.get('attach').setValue( this.imageURI );
+      this.isPreview = true;
     }, (err) => {
       console.log(err);
       this.presentToast(err);
+      this.isPreview = false;
     });
   }
 
   doSubmit() {
-
     this.loading.present();
-    const fileTransfer: FileTransferObject = this.transfer.create();
-
-    let options: FileUploadOptions = {
-      fileKey: 'ionicfile',
-      fileName: 'ionicfile',
-      chunkedMode: false,
-      mimeType: "image/jpeg",
-      headers: {}
-    }
-
-    fileTransfer.upload(this.imageURI, this.auth.api() + '/order-confirmation?token=' + this.auth.token() , options)
-      .then((data) => {
-        console.log(data + " Uploaded Successfully");
-        this.imageFileName = this.auth.imgs() + '/documents/';
-        this.loading.dismiss();
-        this.presentToast("Image uploaded successfully");
-      }, (err) => {
-        console.log(err);
-        this.loading.dismiss();
-        this.presentToast(err);
-      });
+    this.http.post(this.auth.api() + '/order-confirmation',this.frmConfirm.value).subscribe((result) =>{
+      //this.res = JSON.stringify(result);
+      this.navCtrl.setRoot( TrackPage );
+      this.loading.dismissAll();
+    },
+    (error) =>{
+      alert('Error!!\nCannot Comfirm payment. Please try again' + JSON.stringify(error));
+    });    
   }
 
   presentToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
       duration: 3000,
-      position: 'bottom'
+      position: 'middle'
     });
 
     toast.onDidDismiss(() => {
@@ -109,7 +142,7 @@ export class PaymentPage {
 
     toast.present();
   }
-  doDimis(){
-    
+  doCancel(){
+    this.navCtrl.pop();
   }
 }

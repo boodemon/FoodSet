@@ -13,15 +13,62 @@
 </ion-header>
 
 
-<ion-content padding>
-  <form [formGroup]="group">
-  <ion-list>
-    <ion-item>
-      <ion-select  interface="popover" formControlName="opt">
-        <ion-option  *ngFor="let price of pricelist; let i = index;" [value]="price.id" (ionSelect)="doOption(price)" >{{ price.name }}</ion-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
+<ion-content>
+  <form [formGroup]="frmFilter" (ngSubmit)="doFilter()">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <ion-item>
+            <ion-label stacked>START</ion-label>
+            <ion-datetime displayFormat="YYYY-MM-DD" formControlName="onStart"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col col-6>
+          <ion-item>
+            <ion-label stacked>END</ion-label>
+            <ion-datetime displayFormat="YYYY-MM-DD" formControlName="onEnd"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button color="dark" full type="submit" [disabled]="!frmFilter.valid">FILTER</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </form>
-  <p>{{ result }}</p>
+  <hr/>
+  <ion-card *ngFor="let order of orders; let i=index;" (click)="viewOrder(order.id)">
+    <ion-card-header>
+      <ion-icon name="ios-cart-outline"></ion-icon> Order No. #{{ order.code }}
+      <br/>
+      <small><ion-icon name="ios-calendar-outline"></ion-icon> {{ order.created_at | date:'dd MMM yyyy HH:mm' }}</small>
+    </ion-card-header>
+    <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-3>
+              <strong>JOB : </strong>
+            </ion-col>
+            <ion-col col-9>
+               {{ order.jobname }}
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4>
+              <strong>ADDRESS : </strong>
+            </ion-col>
+            <ion-col col-8>{{ order.address }}</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+                  <strong>PRICE : </strong> {{ order.price }} .-
+            </ion-col>
+            <ion-col col-6>
+                  <strong>STATUS : </strong> <span class="status">{{ order.status }}</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

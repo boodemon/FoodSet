@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, Platform, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DashboardPage } from '../dashboard/dashboard';
 import { CategoryPage } from '../category/category';
 import { CheckoutPage } from '../checkout/checkout';
@@ -35,14 +35,9 @@ export class CreateOrderPage {
     private loader: LoadingController,
     private qr:QueryProvider,
     private frm: FormBuilder,
-    public platform:Platform,
-    public toastCtrl: ToastController,
   ) {
     this.auth.online(); 
     this.createForm();
-    this.platform.ready().then(() => {
-      this.createTable();
-    });
   }
 
   ionViewDidLoad() {
@@ -116,31 +111,11 @@ export class CreateOrderPage {
   }
   //Manage Table 
   //========================================================================================
-  createTable(){
-    this.qr.db().then( (db:SQLiteObject) => {
-      db.executeSql('create table if not exists orders (id INTEGER PRIMARY KEY AUTOINCREMENT, userId INTEGER, userName TEXT, jobName TEXT, jobAddress TEXT, jobDate TEXT, jobTime TEXT, jobRemark TEXT, created_at TEXT, updated_at TEXT)',{})
-      .then( (data) => {
-       // this.tb = 'Create table orders successful query is ' + JSON.stringify( data );
-      },(error) => {
-          this.tb = 'Error can not create table orders';
-      });
-    })
-      .catch(e => this.tb = 'Error can not create database ' + JSON.stringify( e ) );
-  }
 
   insertRecord(item){
     let users = JSON.parse( this.user );
     this.qr.db().then((db: SQLiteObject) => {
           db.executeSql("INSERT INTO orders (userId, userName, jobName, jobAddress, jobDate, jobTime, jobRemark, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?)", [users.id, users.name, item.name, item.address, item.onDate, item.onTime, item.remark, this.currentDate(), this.currentDate()]).then((data) => {
-            this.tb += 'table orders inserted ' + JSON.stringify(data);
-            let toast = this.toastCtrl.create({
-              message: 'Create new order successful',
-              duration: 2000,
-              position:'middle'
-            });
-            
-            toast.present();
-            
             this.loading.dismissAll();
             this.navCtrl.setRoot(CategoryPage);
           }, (error) => {
@@ -155,12 +130,6 @@ export class CreateOrderPage {
     this.qr.db().then((db: SQLiteObject) => {
           db.executeSql("UPDATE orders SET jobName='" + item.name + "', jobAddress='" + item.address + "', jobDate='" + item.onDate + "', jobTime='" + item.onTime + "', jobRemark='" + item.remark + "', updated_at='" + this.currentDate() + "' WHERE id=?", [ item.id ]).then((data2) => {
             this.tb = 'table orders updated ' + JSON.stringify(data2);
-            let toast = this.toastCtrl.create({
-              message: 'Data update successful',
-              duration: 2000,
-              position:'middle'
-            });
-            toast.present();
             this.loading.dismissAll();
             this.navCtrl.setRoot(CategoryPage);
           }, (error) => {
