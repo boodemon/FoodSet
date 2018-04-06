@@ -66,7 +66,7 @@
   "cordova-plugin-facebook4": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-facebook4"
+      "id": "cordova-plugin-facebook4@~1.9.1"
     },
     "is_top_level": true,
     "variables": {
@@ -77,7 +77,7 @@
   "cordova-plugin-googleplus": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-googleplus"
+      "id": "cordova-plugin-googleplus@~5.2.1"
     },
     "is_top_level": true,
     "variables": {
@@ -87,7 +87,7 @@
   "cordova-sqlite-storage": {
     "source": {
       "type": "registry",
-      "id": "cordova-sqlite-storage"
+      "id": "cordova-sqlite-storage@~2.2.1"
     },
     "is_top_level": true,
     "variables": {}
@@ -95,7 +95,7 @@
   "cordova-plugin-datepicker": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-datepicker"
+      "id": "cordova-plugin-datepicker@^0.9.3"
     },
     "is_top_level": true,
     "variables": {}
@@ -103,7 +103,7 @@
   "cordova-plugin-camera": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-camera@4.0.2"
+      "id": "cordova-plugin-camera@^4.0.2"
     },
     "is_top_level": true,
     "variables": {}
@@ -111,7 +111,7 @@
   "cordova-plugin-file-transfer": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-file-transfer"
+      "id": "cordova-plugin-file-transfer@^1.7.1"
     },
     "is_top_level": true,
     "variables": {}
