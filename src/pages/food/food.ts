@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import { HttpClient } from '@angular/common/http';
 import { AuthProvider } from '../../providers/auth/auth';
 import { FoodViewPage } from '../food-view/food-view';
+import { RestourantPage } from '../restourant/restourant'
 import { CategoryPage } from '../category/category';
 import { CheckoutPage } from '../checkout/checkout';
 
@@ -21,7 +22,7 @@ import { CheckoutPage } from '../checkout/checkout';
 export class FoodPage {
   foods:any = [];
   food_path:string;
-  category:string;
+  category:any=[];
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -56,6 +57,10 @@ export class FoodPage {
   goFoodview(id){
     this.loading.present();
     this.navCtrl.setRoot( FoodViewPage ,{id:id});
+  }
+  goShopview(id){
+    this.loading.present();
+    this.navCtrl.setRoot( RestourantPage ,{restourant_id:id});
   }
   goCreate(){
     this.loading.present();

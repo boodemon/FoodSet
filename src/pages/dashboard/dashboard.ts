@@ -7,6 +7,7 @@ import { ProfilePage } from '../profile/profile';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
 import { AboutPage } from '../about/about';
+//import { CategoryPage } from '../category/category';
 /**
  * Generated class for the DashboardPage page.
  *
@@ -53,6 +54,7 @@ export class DashboardPage {
   goTrack(){
     this.loading.present();
     this.navCtrl.push( TrackPage );
+    //this.navCtrl.push( CategoryPage );
   }
   
   goProfile(){

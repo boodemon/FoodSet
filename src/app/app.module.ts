@@ -30,6 +30,7 @@ import { FoodViewPageModule } from '../pages/food-view/food-view.module';
 import { CheckoutPageModule } from '../pages/checkout/checkout.module';
 import { PaymentPageModule } from '../pages/payment/payment.module';
 import { AboutPageModule } from '../pages/about/about.module';
+import { RestourantPageModule } from '../pages/restourant/restourant.module';
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
 import { QueryProvider } from '../providers/query/query';
@@ -61,7 +62,8 @@ import { QueryProvider } from '../providers/query/query';
     FoodViewPageModule,
     CheckoutPageModule,
     PaymentPageModule,
-    AboutPageModule
+    AboutPageModule,
+    RestourantPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

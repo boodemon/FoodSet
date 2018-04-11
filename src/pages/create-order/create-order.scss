@@ -1,5 +1,6 @@
 page-create-order {
-    .item-md{
+    .item-md,
+    .item-ios{
         padding:0;
         border: 0;
         background:transparent;
@@ -13,10 +14,12 @@ page-create-order {
         } 
     }
 
-    .item-label-stacked ion-datetime, .item-label-floating ion-datetime {
-    padding-left: 10px;
-    width: 100%;
-    background:$white;
-    border-radius: 4px;
-}
+    .item-label-stacked ion-datetime, .item-label-floating ion-datetime ,
+    .label-ios[stacked] ion-datetime
+    {
+        padding-left: 10px;
+        width: 100%;
+        background:$white;
+        border-radius: 4px;
+    }
 }

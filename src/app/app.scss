@@ -19,8 +19,20 @@ $yellow:#f8b318;
 $white:#fff;
 $black:#010101;
 $c:#ccc;
-.content-md{
+$red:#f00;
+ion-app.md {
+    background-color:$bg-yellow;
+}
+.content-md,.content-ios{
     background: $bg-yellow;
+}
+.toolbar-background-md ,
+.header-ios .toolbar-ios:last-child .toolbar-background-ios{
+    background: $black;
+    color: $white;
+}
+.toolbar-title-ios{
+    color:$white;
 }
 .text-line{
     color:$black;
@@ -56,4 +68,20 @@ $c:#ccc;
   border-bottom-color: $black;
   -webkit-box-shadow: inset 0 -1px 0 0 $black;
   box-shadow: inset 0 -1px 0 0 $black;
+}
+/* IOS CSS */
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, .bar-button-clear-ios-default {
+    color: $white;
+    background-color: transparent;
+}
+.bar-buttons-ios[end]{
+    .bar-button-ios[icon-only]{
+        min-width: 2em;
+    }
+}
+.back-button.show-back-button{
+    min-width: 4.9em;
+}
+.alert{
+    color:$red;
 }

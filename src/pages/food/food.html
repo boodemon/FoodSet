@@ -17,15 +17,27 @@
   <ion-grid>
     <ion-row class="page-title">
       <ion-col>
-        <h2>{{ category }}</h2>
+        <h2>{{ category.name }}</h2>
         <hr/>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="category.option=='food'">
       <ion-col col-6  class="food-data" *ngFor="let row of foods" (click)="goFoodview( row.id )">
           <ion-card>
               <img src="{{ row.food_image }}" />
               <div class="card-title">{{ row.food_name }}</div>
+          </ion-card>  
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="category.option=='shop'">
+      <ion-col class="restourant-data">
+          <ion-card *ngFor="let row of foods" (click)="goShopview( row.id )">
+              <img src="{{ row.thumb }}" />
+              <div class="card-title">
+                <h4>{{ row.restourant }}</h4>
+                <p><strong>Contact : </strong>{{ row.restourant }}</p>
+                <p><strong>Tel : </strong>{{ row.restourant }}</p>
+              </div>
           </ion-card>  
       </ion-col>
     </ion-row>

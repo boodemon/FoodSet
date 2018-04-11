@@ -1,0 +1,48 @@
+page-restourant {
+    .no-bg{
+        background: transparent;
+        font-weight: 0;
+        color:#000;
+    }
+    .food-data{
+        display:inline-block;
+        padding:0;
+        position: relative;
+        .col{
+            padding: 2px;
+        }
+        img{
+            width:100%;
+        }
+        .card{
+            padding:0;
+            margin:0;
+            width:100%;
+        }
+        .card-title{
+            position: absolute;
+            bottom:5px;
+            left:5px;
+            font-size: 2.4rem;
+            color:$black;
+            text-shadow: 2px 2px 4px $white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    }
+    .grid{
+        padding:4px;
+    }
+    .col{
+        padding:2px;
+        h2{
+            padding:2px;
+            margin:0;
+        }
+    }
+    .toolbar{
+        padding:0;
+        .col{
+            padding:4px;
+        }
+    }
+}

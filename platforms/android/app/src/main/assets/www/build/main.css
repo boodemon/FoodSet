@@ -25875,6 +25875,33 @@ page-food .toolbar .col {
   padding: 4px;
 }
 
+page-food .restourant-data {
+  position: relative;
+}
+
+page-food .restourant-data .card-md {
+  margin: 0;
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  min-height: 120px;
+}
+
+page-food .restourant-data .card-md img {
+  width: 100%;
+}
+
+page-food .restourant-data .card-md .card-title {
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  font-size: 2.4rem;
+  color: #010101;
+  text-shadow: 2px 2px 4px #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 page-food-view .card-md {
   margin: 0;
   width: 100%;
@@ -26229,6 +26256,63 @@ page-register .btn-reg .button-md {
 page-register .btn-reg .button-md:hover:not(.disable-hover) {
   background: #010101;
   color: #fff;
+}
+
+page-restourant .no-bg {
+  background: transparent;
+  font-weight: 0;
+  color: #000;
+}
+
+page-restourant .food-data {
+  display: inline-block;
+  padding: 0;
+  position: relative;
+}
+
+page-restourant .food-data .col {
+  padding: 2px;
+}
+
+page-restourant .food-data img {
+  width: 100%;
+}
+
+page-restourant .food-data .card {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+page-restourant .food-data .card-title {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  font-size: 2.4rem;
+  color: #010101;
+  text-shadow: 2px 2px 4px #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+page-restourant .grid {
+  padding: 4px;
+}
+
+page-restourant .col {
+  padding: 2px;
+}
+
+page-restourant .col h2 {
+  padding: 2px;
+  margin: 0;
+}
+
+page-restourant .toolbar {
+  padding: 0;
+}
+
+page-restourant .toolbar .col {
+  padding: 4px;
 }
 
 page-track .bar-button-md[icon-only] {
