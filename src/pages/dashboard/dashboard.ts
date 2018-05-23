@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams ,LoadingController, AlertController} from 'ionic-angular';
 import { CreateOrderPage } from '../create-order/create-order';
 import { HistoryPage } from '../../pages/history/history';
-import { TrackPage } from '../track/track';
 import { ProfilePage } from '../profile/profile';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
 import { AboutPage } from '../about/about';
+import { TrackPage } from '../track/track';
 //import { CategoryPage } from '../category/category';
 /**
  * Generated class for the DashboardPage page.

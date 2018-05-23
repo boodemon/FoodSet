@@ -6,6 +6,7 @@ import { FormBuilder, Validators,FormGroup} from '@angular/forms';
 // Page //
 import { FoodPage } from '../food/food';
 import { CheckoutPage } from '../checkout/checkout';
+import { RatingViewPage } from '../rating-view/rating-view';
 
 // Provider include //
 import { AuthProvider } from '../../providers/auth/auth';
@@ -35,9 +36,11 @@ export class FoodViewPage {
   cart:FormGroup;
   action:string = 'new';
   arrprice:any = [];
+  score:number=0;
   private table:string = 'orderlist';
   private user = JSON.parse( localStorage.getItem('user') );
   public price:number;
+  public priceId:number;
   public amount:number;
   
   constructor(
@@ -74,6 +77,7 @@ export class FoodViewPage {
       'restourant_name': [''],
       'quantity': [1, Validators.required],
       'price': [''],
+      'score':[''],
       'amount': [''],
       'remark': ['']
     });
@@ -97,7 +101,12 @@ export class FoodViewPage {
               this.cart.get('category_id').setValue(json['category_id']);
               this.cart.get('food_id').setValue(json['id']);
               this.cart.get('food_name').setValue(json['food_name']);
+              //this.score = json['rating'].score;
           }
+          let rating = json['rating'];
+          this.cart.get('score').setValue( rating['score']);
+          this.score = rating['score'];
+              console.log('score is ' , rating['score']);
       }
       this.loading.dismissAll();
     })
@@ -114,8 +123,11 @@ export class FoodViewPage {
         this.cart.get('restourant_id').setValue(json['restourant_id']);
         this.cart.get('restourant_name').setValue(json['restourant']);
         this.cart.get('price').setValue(json['price']);
+        this.cart.get('score').setValue(json['rating']['score']);
         this.price = json['price'];
         this.amount = json['price'];
+        this.score = json['rating']['score'];
+        this.priceId = json['id'];
         for (let i = 0; i <= ( response['data'].length - 1 ); i++) {
           if (response['data'][i] !== null && response['data'][i] !== '')
           this.arrprice[ response['data'][i]['id'] ] = response['data'][i];
@@ -148,6 +160,10 @@ export class FoodViewPage {
     this.price = json.price;
     this.amount = json.price * qty;
     this.cart.get('amount').setValue( this.amount );
+    this.cart.get('score').setValue( json.rating.score );
+    console.log('change json set is => ', json, 'score is ', json.rating.score );
+    this.score = json.rating.score;
+    this.priceId = json.id;
   }
 
   doSubmit(){
@@ -251,6 +267,10 @@ export class FoodViewPage {
     (error) =>{
       alert('Error!!\nCannot open DATABASE ' + JSON.stringify( error ) );
     });
+  }
+
+  goRating(id){
+    this.navCtrl.push( RatingViewPage,{price_id : id });
   }
 
 }

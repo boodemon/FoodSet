@@ -22,3 +22,17 @@ page-forgot {
 .bar-button-default-md:hover:not(.disable-hover), .bar-button-clear-md-default:hover:not(.disable-hover), .bar-button-md-default:hover:not(.disable-hover){
     color:$yellow;
 }
+.result-error{
+    background: #f5c9c9;
+    color:#f00;
+    border-radius: 4px;
+    padding:20px;
+    margin:6px;
+}
+.result-success{
+    background: #ddf5df;
+    color:#04a140;
+    border-radius: 4px;
+    padding:20px;
+    margin:6px;
+}

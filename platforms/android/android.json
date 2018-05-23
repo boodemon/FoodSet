@@ -10,11 +10,11 @@
           "/resources": [
             {
               "xml": "<string name=\"fb_app_id\">2018552691718690</string>",
-              "count": 8
+              "count": 2
             },
             {
-              "xml": "<string name=\"fb_app_name\">TigerwealthOrderFood</string>",
-              "count": 8
+              "xml": "<string name=\"fb_app_name\">Food@Set</string>",
+              "count": 2
             }
           ]
         }

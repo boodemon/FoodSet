@@ -20,7 +20,6 @@ import { CheckoutPage } from '../checkout/checkout';
 })
 export class CategoryPage {
   rows:any = [];
-  img_path:string;
   constructor(
       public navCtrl: NavController, 
       public loading: LoadingController,
@@ -28,6 +27,7 @@ export class CategoryPage {
       private http:HttpClient ,
       private auth:AuthProvider
             ) {
+        this.auth.online();
   }
 
   ionViewDidLoad() {
@@ -41,12 +41,14 @@ export class CategoryPage {
 
   getCategory(){
     this.preload.present();
-    this.http.get( this.auth.api() + '/category?token=' + this.auth.token() ).subscribe((data) => {
-      this.img_path = data['img_path'];
+    let url = this.auth.api() + '/category?token=' + this.auth.token();
+    //alert('url => ' + url );
+    this.http.get( url ).subscribe((data) => {
       this.rows = data['data'];
       console.log('data rows ', this.rows );
-      this.preload.dismissAll();
+      this.preload.dismiss();
     },err =>{
+      alert('Error!! cannot loading script ' + JSON.stringify(err) );
     })
   }
 

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.setconference.tigerwealth" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.setconference.tigerwealth" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
         <param name="onload" value="true" />
@@ -52,11 +52,11 @@
         <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
         <param name="onload" value="true" />
     </feature>
-    <name>Set Conference</name>
+    <name>Food @ Set</name>
     <description>รับจัดเลี้ยงนอกสถานที่</description>
-    <author email="catering@tigerwealth.co.th" href="http://genies.in.th">Tiger Wealtgh</author>
+    <author email="howwealth@gmail.com" href="http://genies.in.th">Tiger Wealtgh</author>
     <content src="index.html" />
-    <access origin="*" subdomains="true" />
+    <access origin="*" />
     <allow-navigation href="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -85,7 +85,7 @@
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     <config-file parent="/resources" target="./res/values/strings.xml">
         <string name="fb_app_id">2018552691718690</string>
-        <string name="fb_app_name">TigerwealthOrderFood</string>
+        <string name="fb_app_name">Food@Set</string>
     </config-file>
     <preference name="loglevel" value="DEBUG" />
     <preference name="android-minSdkVersion" value="17" />

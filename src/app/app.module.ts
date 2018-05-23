@@ -31,9 +31,12 @@ import { CheckoutPageModule } from '../pages/checkout/checkout.module';
 import { PaymentPageModule } from '../pages/payment/payment.module';
 import { AboutPageModule } from '../pages/about/about.module';
 import { RestourantPageModule } from '../pages/restourant/restourant.module';
+
+import { Ionic2RatingModule } from 'ionic2-rating'
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
 import { QueryProvider } from '../providers/query/query';
+//import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,8 @@ import { QueryProvider } from '../providers/query/query';
     CheckoutPageModule,
     PaymentPageModule,
     AboutPageModule,
-    RestourantPageModule
+    RestourantPageModule,
+    Ionic2RatingModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

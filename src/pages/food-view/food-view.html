@@ -25,6 +25,20 @@
           <ion-col text-right>Calorie <strong>{{ row.kcal }}</strong> (kcal)</ion-col>
         </ion-row>
         <ion-row>
+            <ion-col col-4><strong>Ratting : </strong></ion-col>
+            <ion-col col-8 text-right (click)="goRating(priceId)">
+                  <rating formControlName="score"
+                      readOnly="true"
+                      max="5" 
+                      emptyStarIconName="star-outline" 
+                      starIconName="star" 
+                      nullable="false"
+                      >
+                  </rating>
+                <strong>{{ score }}</strong>
+            </ion-col>
+        </ion-row>
+        <ion-row>
           <ion-col col-4>
             <ion-item>
               <ion-label>Restaurant </ion-label>

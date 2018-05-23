@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { ViewOrderPage } from '../view-order/view-order';
+import { RatingPage } from '../rating/rating';
+
 
 /**
  * Generated class for the HistoryPage page.
@@ -22,6 +24,7 @@ export class HistoryPage {
   frmFilter:FormGroup;
   result:string;
   orders:any = [];
+  score:any=[];
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -74,6 +77,11 @@ export class HistoryPage {
       let code = res['code'];
       if (code == 200) {
         this.orders = res['data'];
+        for(let i=0; i <= res['data'].length; i++){
+          console.log( this.orders[i] );
+          this.score[i] = 3.5;//this.orders[i].rating.score;
+        }
+        
         this.loading.dismissAll();
       } else {
         this.loading.dismissAll();
@@ -111,6 +119,10 @@ export class HistoryPage {
 
   viewOrder(id) {
     let view = this.pop.create(ViewOrderPage, { order_id: id });
+    view.present();
+  }
+  modalRating(id){
+    let view = this.pop.create(RatingPage, {order_id:id});
     view.present();
   }
 
