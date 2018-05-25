@@ -30,9 +30,6 @@
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.setconference.tigerwealth"
     },
-    "cordova-plugin-firebase": {
-      "PACKAGE_NAME": "com.setconference.tigerwealth"
-    },
     "cordova-plugin-googleplus": {
       "PACKAGE_NAME": "com.setconference.tigerwealth"
     },

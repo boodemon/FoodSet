@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
 import { DashboardComponent } from './dashboard/dashboard';
-import { GoogleLoginComponent } from './google-login/google-login';
 @NgModule({
-	declarations: [DashboardComponent,
-    GoogleLoginComponent,
-    GoogleLoginComponent],
+	declarations: [DashboardComponent],
 	imports: [],
-	exports: [DashboardComponent,
-    GoogleLoginComponent,
-    GoogleLoginComponent]
+	exports: [DashboardComponent]
 })
 export class ComponentsModule {}

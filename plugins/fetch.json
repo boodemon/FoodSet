@@ -74,6 +74,16 @@
       "APP_NAME": "Set Conference"
     }
   },
+  "cordova-plugin-googleplus": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-googleplus@~5.2.1"
+    },
+    "is_top_level": true,
+    "variables": {
+      "REVERSED_CLIENT_ID": "com.googleusercontent.apps.283671105001"
+    }
+  },
   "cordova-sqlite-storage": {
     "source": {
       "type": "registry",
@@ -105,23 +115,5 @@
     },
     "is_top_level": true,
     "variables": {}
-  },
-  "cordova-plugin-firebase": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-firebase@^1.0.5"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
-  "cordova-plugin-googleplus": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-googleplus"
-    },
-    "is_top_level": true,
-    "variables": {
-      "REVERSED_CLIENT_ID": "com.googleusercontent.apps.563076778504-c7kmg1eqh7npsschjr4kc5s5kb1v6qnm"
-    }
   }
 }
