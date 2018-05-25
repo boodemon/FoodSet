@@ -40,13 +40,13 @@ export class CategoryPage {
   });
 
   getCategory(){
-    this.preload.present();
+    //this.preload.present();
     let url = this.auth.api() + '/category?token=' + this.auth.token();
     //alert('url => ' + url );
     this.http.get( url ).subscribe((data) => {
       this.rows = data['data'];
       console.log('data rows ', this.rows );
-      this.preload.dismiss();
+      //this.preload.dismiss();
     },err =>{
       alert('Error!! cannot loading script ' + JSON.stringify(err) );
     })
@@ -57,6 +57,7 @@ export class CategoryPage {
   }
   
   goCreate() {
+    this.preload.present();
     this.navCtrl.setRoot(CreateOrderPage);
   }
 

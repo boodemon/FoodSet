@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams ,AlertController, LoadingController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams ,AlertController, LoadingController, Platform} from 'ionic-angular';
 import { Facebook, FacebookLoginResponse} from '@ionic-native/facebook';
 import { GooglePlus } from '@ionic-native/google-plus';
+import * as firebase from 'firebase/app';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup} from '@angular/forms';
-
 import { ForgotPage } from '../forgot/forgot';
 import { RegisterPage } from '../register/register';
 import { DashboardPage } from '../dashboard/dashboard';
-
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Observable } from 'rxjs/Observable';
 /**
  * Generated class for the LoginPage page.
  *
@@ -24,6 +25,7 @@ import { DashboardPage } from '../dashboard/dashboard';
 })
 export class LoginPage {
   userData:any;
+  gUser: Observable<firebase.User>;
   private frmLogin:FormGroup;
 
   constructor(
@@ -33,19 +35,22 @@ export class LoginPage {
     private auth:AuthProvider,
     private http:HttpClient,
     private alertCtrl: AlertController,
-    private googlePlus: GooglePlus,
+    private gplus: GooglePlus,
     private loader: LoadingController,
-    private frm: FormBuilder
+    private frm: FormBuilder,
+    private afAuth: AngularFireAuth,
+    private platform: Platform
   ) {
     this.created();
+    this.gUser = this.afAuth.authState;
   }
+
   loading = this.loader.create({
     content: 'Loading ...',
     dismissOnPageChange: true,
   });
 
   api = this.auth.api();
-  user:any = {};
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -110,7 +115,6 @@ export class LoginPage {
             alert('err \n'+ JSON.stringify( err ) );
             this.loading.dismiss();
           });
-        //this.userData = {email: profile['email'], first_name: profile['first_name'], picture: profile['picture_large']['data']['url'], username: profile['name']}
       });
     }).catch(err => {
       this.facebook.logout();
@@ -120,40 +124,68 @@ export class LoginPage {
   }
 
   loginGoogle(){
-    this.loading.present();
-    this.googlePlus.login({
-        // 'webClientId': '393062943788-9757oi79t1ldru2dbs7pq9ohugacjuea.apps.googleusercontent.com',
-        // 'offline': true,
-        // 'scopes': 'profile email'
+    
+    //this.loading.present();
+    if (this.platform.is('cordova')) {
+      //let gAuth = this.nativeGoogleLogin();
+      console.log( 'gauth click login' );
+      this.gplus.login({})
+      .then(res => console.log('native res ' , res))
+      .catch(err => console.error('native error => ', err));
+    } else {
+      this.webGoogleLogin();
+    }
+    
+  }
+
+  async nativeGoogleLogin(): Promise<void> {
+    try {
+  
+      const gplusUser = await this.gplus.login({
+        'webClientId': '563076778504-jv6mkamq5do9fohulgkpjtu7i7nouqpp.apps.googleusercontent.com',
+        'offline': true,
+        'scopes': 'profile email'
       })
-      .then(res => {
-        this.http.post(this.api + '/auth0/google', res).subscribe((response) => {
-          let code = response['code'];
-          if (code == 200) {
-            localStorage.setItem('token', response['auth']);
-            localStorage.setItem('user', JSON.stringify(response['data']));
-            this.navCtrl.setRoot(DashboardPage);
-          } else {
-            let alert = this.alertCtrl.create({
-              title: 'Error',
-              subTitle: response['message'],
-              buttons: ['OK']
-            });
-            alert.present();
-          }
+  
+      return await this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken))
+  
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+  async webGoogleLogin(): Promise<void> {
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      const credential = await this.afAuth.auth.signInWithPopup(provider);
+      this.googleLogin( credential );
+    } catch(err) {
+      alert('Web Google Login Error!! ' + err);
+    }
+  
+  }
+
+  googleLogin(data){
+      this.http.post(this.api + '/auth0/google', data).subscribe((response) => {
+        let code = response['code'];
+        if (code == 200) {
+          localStorage.setItem('token', response['auth']);
+          localStorage.setItem('user', JSON.stringify(response['data']));
+          this.navCtrl.setRoot(DashboardPage);
+        } else {
+          let alert = this.alertCtrl.create({
+            title: 'Error',
+            subTitle: response['message'],
+            buttons: ['OK']
+          });
+          alert.present();
+        }
+        this.loading.dismiss();
+      },
+      err => {
+          alert('err \n' + err.message );
           this.loading.dismiss();
-         //this.userData = response;
-        },
-          err => {
-            alert('err \n' + JSON.stringify(err));
-            this.loading.dismiss();
-          });        
-      })
-      .catch(err => {
-        alert( 'Error !! Cannot login please try again' + JSON.stringify(err)); 
-        this.googlePlus.logout();
-        this.loading.dismiss(); 
-      });
+      });   
   }
 
 }

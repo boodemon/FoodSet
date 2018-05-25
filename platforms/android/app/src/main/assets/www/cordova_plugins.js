@@ -279,6 +279,14 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-firebase.FirebasePlugin",
+    "file": "plugins/cordova-plugin-firebase/www/firebase.js",
+    "pluginId": "cordova-plugin-firebase",
+    "clobbers": [
+      "FirebasePlugin"
+    ]
+  },
+  {
     "id": "cordova-plugin-googleplus.GooglePlus",
     "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
     "pluginId": "cordova-plugin-googleplus",
@@ -340,7 +348,8 @@ module.exports.metadata =
   "cordova-plugin-device": "1.1.4",
   "cordova-plugin-facebook4": "1.9.1",
   "cordova-plugin-file-transfer": "1.7.1",
-  "cordova-plugin-googleplus": "5.2.2",
+  "cordova-plugin-firebase": "1.0.5",
+  "cordova-plugin-googleplus": "5.3.0",
   "cordova-plugin-ionic-webview": "1.1.16",
   "cordova-plugin-nativestorage": "2.3.0",
   "cordova-plugin-splashscreen": "4.0.3",

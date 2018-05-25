@@ -1,6 +1,7 @@
 import { BrowserModule }            from '@angular/platform-browser';
 import { ErrorHandler, NgModule, }  from '@angular/core';
 import { HttpClientModule }         from '@angular/common/http';
+import { CommonModule }         from '@angular/common';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 // ionic native //
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,6 +14,8 @@ import { DatePicker } from '@ionic-native/date-picker';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { MyApp }        from './app.component';
 import { HomePage }     from '../pages/home/home';
@@ -36,8 +39,16 @@ import { Ionic2RatingModule } from 'ionic2-rating'
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
 import { QueryProvider } from '../providers/query/query';
-//import { FormsModule } from '@angular/forms';
 
+//import { FormsModule } from '@angular/forms';
+const firebaseConfig = {
+            apiKey: "AIzaSyCII1_3p5SMFw6uKxbHN_SLylkiVlo_Yk8",
+            authDomain: "foodset-6261f.firebaseapp.com",
+            databaseURL: "https://foodset-6261f.firebaseio.com",
+            projectId: "foodset-6261f",
+            storageBucket: "foodset-6261f.appspot.com",
+            messagingSenderId: "563076778504"
+    }
 @NgModule({
   declarations: [
     MyApp,
@@ -68,6 +79,9 @@ import { QueryProvider } from '../providers/query/query';
     AboutPageModule,
     RestourantPageModule,
     Ionic2RatingModule,
+    AngularFireAuthModule,
+    AngularFireModule.initializeApp( firebaseConfig ),
+    CommonModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -86,7 +100,6 @@ import { QueryProvider } from '../providers/query/query';
     AuthProvider,
     QueryProvider,
     FileTransfer,
-    
     FileTransferObject,
     File,
     Camera
