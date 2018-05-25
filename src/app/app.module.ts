@@ -34,8 +34,6 @@ import { CheckoutPageModule } from '../pages/checkout/checkout.module';
 import { PaymentPageModule } from '../pages/payment/payment.module';
 import { AboutPageModule } from '../pages/about/about.module';
 import { RestourantPageModule } from '../pages/restourant/restourant.module';
-
-import { Ionic2RatingModule } from 'ionic2-rating'
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
 import { QueryProvider } from '../providers/query/query';
@@ -77,11 +75,15 @@ const firebaseConfig = {
     CheckoutPageModule,
     PaymentPageModule,
     AboutPageModule,
+<<<<<<< HEAD
     RestourantPageModule,
     Ionic2RatingModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp( firebaseConfig ),
     CommonModule
+=======
+    RestourantPageModule
+>>>>>>> parent of 9e02d5f4... version 1.1.0
   ],
   bootstrap: [IonicApp],
   entryComponents: [

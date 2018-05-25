@@ -102,10 +102,10 @@ export class CreateOrderPage {
             this.insertRecord(item);
           }
          // this.insertRecord(item);
-        this.navCtrl.setRoot( CategoryPage );
-        this.loading.dismiss(); 
-    }).catch( (error) => {
-      this.loading.dismiss(); 
+        //this.navCtrl.setRoot( CategoryPage );
+        this.loading.dismissAll(); 
+    }, (error) => {
+      this.loading.dismissAll(); 
       this.tb = 'Error Cannot open database ' + JSON.stringify(error);
     });
   }
@@ -116,12 +116,12 @@ export class CreateOrderPage {
     let users = JSON.parse( this.user );
     this.qr.db().then((db: SQLiteObject) => {
           db.executeSql("INSERT INTO orders (userId, userName, jobName, jobAddress, jobDate, jobTime, jobRemark, created_at, updated_at) VALUES (?,?,?,?,?,?,?,?,?)", [users.id, users.name, item.name, item.address, item.onDate, item.onTime, item.remark, this.currentDate(), this.currentDate()]).then((data) => {
-            this.loading.dismiss();
+            this.loading.dismissAll();
             this.navCtrl.setRoot(CategoryPage);
-          }).catch( (error) => {
+          }, (error) => {
             this.tb = 'Error insert on orders table ' + JSON.stringify(error);
           });
-      }).catch( (error) => {
+      }, (error) => {
         this.tb = 'Error show database ' + JSON.stringify(error);
       });
   }
@@ -130,12 +130,12 @@ export class CreateOrderPage {
     this.qr.db().then((db: SQLiteObject) => {
           db.executeSql("UPDATE orders SET jobName='" + item.name + "', jobAddress='" + item.address + "', jobDate='" + item.onDate + "', jobTime='" + item.onTime + "', jobRemark='" + item.remark + "', updated_at='" + this.currentDate() + "' WHERE id=?", [ item.id ]).then((data2) => {
             this.tb = 'table orders updated ' + JSON.stringify(data2);
-            this.loading.dismiss();
+            this.loading.dismissAll();
             this.navCtrl.setRoot(CategoryPage);
-          }).catch( (error) => {
+          }, (error) => {
             alert('Error update orders table ' + JSON.stringify(error));
           });
-      }).catch( (error) => {
+      }, (error) => {
         alert('Error show database ' + JSON.stringify(error));
       });
   }

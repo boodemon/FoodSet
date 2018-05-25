@@ -22,7 +22,7 @@
     <ion-card-header (click)="viewOrder(order.id)">
         <ion-icon name="ios-cart-outline"></ion-icon> Order No. #{{ order.code }}
         <p><small>{{ order.created_at | date:'dd MMM yyyy HH:mm' }}</small></p>
-        <ion-badge color="dark">{{ order.status_name }}</ion-badge>
+        <ion-badge color="dark">{{ order.status }}</ion-badge>
     </ion-card-header>
     <ion-card-content *ngIf="order.tracking.length > 0">
       <h4>TRACKING STATUS</h4>

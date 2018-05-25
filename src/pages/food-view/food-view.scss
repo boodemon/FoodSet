@@ -40,19 +40,4 @@ page-food-view {
             max-width: 100%;
         }
     }
-    ul {
-        padding: 0px;
-        margin-top:-5px;
-        &.rating li {
-          background: none;
-          color: #ff3300;
-            padding:0 !important;
-            margin:0;
-          ion-icon {
-            font-size: 30px;
-            padding:0;
-            margin:0;
-          }
-        }
-      }  
 }

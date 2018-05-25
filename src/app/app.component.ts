@@ -26,7 +26,6 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       if( platform.is('cordova') ){
-        //alert('created sqli header and detail');
         qr.createHead();
         qr.createDetail();    
       }
@@ -37,12 +36,9 @@ export class MyApp {
   }
   startPage(){
     let token = localStorage.getItem('token');
-    console.log('token ' , token );
     if( token ){
-      console.log('go to dashboard');
       return DashboardPage;
     }else{
-      console.log('go to login');
       return LoginPage;
     }
   }
