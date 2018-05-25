@@ -40,22 +40,12 @@ export class CategoryPage {
   });
 
   getCategory(){
-<<<<<<< HEAD
-    //this.preload.present();
-    let url = this.auth.api() + '/category?token=' + this.auth.token();
-    //alert('url => ' + url );
-    this.http.get( url ).subscribe((data) => {
-      this.rows = data['data'];
-      console.log('data rows ', this.rows );
-      //this.preload.dismiss();
-=======
     this.preload.present();
     this.http.get( this.auth.api() + '/category?token=' + this.auth.token() ).subscribe((data) => {
       this.img_path = data['img_path'];
       this.rows = data['data'];
       console.log('data rows ', this.rows );
       this.preload.dismissAll();
->>>>>>> parent of 9e02d5f4... version 1.1.0
     },err =>{
     })
   }
