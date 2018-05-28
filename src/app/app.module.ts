@@ -1,7 +1,7 @@
 import { BrowserModule }            from '@angular/platform-browser';
 import { ErrorHandler, NgModule, }  from '@angular/core';
 import { HttpClientModule }         from '@angular/common/http';
-import { CommonModule }         from '@angular/common';
+//import { CommonModule }         from '@angular/common';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 // ionic native //
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,6 +37,7 @@ import { RestourantPageModule } from '../pages/restourant/restourant.module';
 // IMPORT PROVIDER //
 import { AuthProvider } from '../providers/auth/auth';
 import { QueryProvider } from '../providers/query/query';
+import { FormsModule } from '@angular/forms';
 
 //import { FormsModule } from '@angular/forms';
 const firebaseConfig = {
@@ -58,7 +59,9 @@ const firebaseConfig = {
     IonicModule.forRoot(MyApp,{
       preloadModules: true
     }),
+    AngularFireModule.initializeApp(firebaseConfig),
     HttpClientModule,
+    FormsModule,
     LoginPageModule,
     CategoryPageModule,
     CreateOrderPageModule,
@@ -75,15 +78,8 @@ const firebaseConfig = {
     CheckoutPageModule,
     PaymentPageModule,
     AboutPageModule,
-<<<<<<< HEAD
     RestourantPageModule,
-    Ionic2RatingModule,
     AngularFireAuthModule,
-    AngularFireModule.initializeApp( firebaseConfig ),
-    CommonModule
-=======
-    RestourantPageModule
->>>>>>> parent of 9e02d5f4... version 1.1.0
   ],
   bootstrap: [IonicApp],
   entryComponents: [

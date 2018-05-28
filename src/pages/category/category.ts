@@ -45,7 +45,7 @@ export class CategoryPage {
       this.img_path = data['img_path'];
       this.rows = data['data'];
       console.log('data rows ', this.rows );
-      this.preload.dismissAll();
+      this.preload.dismiss();
     },err =>{
     })
   }

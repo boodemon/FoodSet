@@ -10,11 +10,11 @@
           "/resources": [
             {
               "xml": "<string name=\"fb_app_id\">2018552691718690</string>",
-              "count": 2
+              "count": 13
             },
             {
               "xml": "<string name=\"fb_app_name\">Food@Set</string>",
-              "count": 2
+              "count": 13
             }
           ]
         }
@@ -79,10 +79,6 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"FirebasePlugin\"><param name=\"android-package\" value=\"org.apache.cordova.firebase.FirebasePlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"GooglePlus\"><param name=\"android-package\" value=\"nl.xservices.plugins.GooglePlus\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             },
@@ -119,18 +115,6 @@
             {
               "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
               "count": 3
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
-              "count": 1
             }
           ],
           "/manifest": [
@@ -164,24 +148,6 @@
               "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|screenLayout|screenSize|orientation\" android:label=\"@string/fb_app_name\" android:name=\"com.facebook.FacebookActivity\" />",
               "count": 1
             }
-          ],
-          "/manifest/application": [
-            {
-              "xml": "<service android:enabled=\"true\" android:exported=\"false\" android:name=\"com.google.android.gms.measurement.AppMeasurementService\" />",
-              "count": 1
-            },
-            {
-              "xml": "<service android:name=\"org.apache.cordova.firebase.FirebasePluginMessagingService\"><intent-filter><action android:name=\"com.google.firebase.MESSAGING_EVENT\" /></intent-filter></service>",
-              "count": 1
-            },
-            {
-              "xml": "<service android:name=\"org.apache.cordova.firebase.FirebasePluginInstanceIDService\"><intent-filter><action android:name=\"com.google.firebase.INSTANCE_ID_EVENT\" /></intent-filter></service>",
-              "count": 1
-            },
-            {
-              "xml": "<receiver android:name=\"org.apache.cordova.firebase.OnNotificationOpenReceiver\" />",
-              "count": 1
-            }
           ]
         }
       },
@@ -194,20 +160,6 @@
             },
             {
               "xml": "<string name=\"fb_app_name\">Set Conference</string>",
-              "count": 1
-            }
-          ]
-        }
-      },
-      "res/values/strings.xml": {
-        "parents": {
-          "/resources": [
-            {
-              "xml": "<string name=\"google_app_id\">@string/google_app_id</string>",
-              "count": 1
-            },
-            {
-              "xml": "<string name=\"google_api_key\">@string/google_api_key</string>",
               "count": 1
             }
           ]
@@ -237,9 +189,6 @@
       "PACKAGE_NAME": "com.setconference.tigerwealth"
     },
     "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "com.setconference.tigerwealth"
-    },
-    "cordova-plugin-firebase": {
       "PACKAGE_NAME": "com.setconference.tigerwealth"
     },
     "cordova-plugin-googleplus": {
@@ -545,14 +494,6 @@
       ]
     },
     {
-      "id": "cordova-plugin-firebase.FirebasePlugin",
-      "file": "plugins/cordova-plugin-firebase/www/firebase.js",
-      "pluginId": "cordova-plugin-firebase",
-      "clobbers": [
-        "FirebasePlugin"
-      ]
-    },
-    {
       "id": "cordova-plugin-googleplus.GooglePlus",
       "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
       "pluginId": "cordova-plugin-googleplus",
@@ -610,9 +551,8 @@
     "cordova-plugin-camera": "4.0.2",
     "cordova-plugin-datepicker": "0.9.3",
     "cordova-plugin-device": "1.1.4",
-    "cordova-plugin-facebook4": "1.9.1",
+    "cordova-plugin-facebook4": "1.10.1",
     "cordova-plugin-file-transfer": "1.7.1",
-    "cordova-plugin-firebase": "1.0.5",
     "cordova-plugin-googleplus": "5.3.0",
     "cordova-plugin-ionic-webview": "1.1.16",
     "cordova-plugin-nativestorage": "2.3.0",

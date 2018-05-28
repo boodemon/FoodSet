@@ -51,7 +51,7 @@ export class FoodPage {
         this.category = data['category'];
         this.food_path = data['food_path'];
         console.log('food ', this.foods , data , '| FOOD PATH ', this.food_path  );
-        this.loading.dismissAll();
+        this.loading.dismiss();
       });
   }
   goFoodview(id){
