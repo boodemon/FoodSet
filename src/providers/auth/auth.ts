@@ -85,8 +85,15 @@ export class AuthProvider {
   }
 
   logout(){
-    this.googlePlus.logout();
-    this.facebook.logout();
+    this.googlePlus.trySilentLogin().then(gres => {
+      console.log('google login status ', gres );
+      this.googlePlus.logout();
+    });
+    this.facebook.getLoginStatus().then(fres => {
+      console.log('facebook login status ', fres );
+      if(fres == 'connected')
+        this.facebook.logout();
+    });
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     //location.reload();

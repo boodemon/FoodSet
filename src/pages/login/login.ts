@@ -24,7 +24,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  userData:any;
+  userData:string = '';
   user:any={};
   gStatus:number = 0;
   gUser: Observable<firebase.User>;
@@ -70,7 +70,6 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
   doLogin(){
-
     this.http.post(this.api + '/auth0/login', this.frmLogin.value ).subscribe((response) => {
         let code = response['code'];
         if( code == 200 ){
@@ -93,7 +92,13 @@ export class LoginPage {
   }
 
   loginFacebook(){
+    this.loading.present();
+    this.fbSender();
+  }
+
+  fbSender(){
     this.facebook.login(['email', 'public_profile']).then((response: FacebookLoginResponse) => {
+      //console.log('facebook response ' , response );
       this.facebook.api('me?fields=id,name,email,first_name,picture.width(720).height(720).as(picture_large)', []).then(profile => {
         this.http.post(this.api + '/auth0/facebook', profile).subscribe((response) => {
           let code = response['code'];
@@ -114,12 +119,12 @@ export class LoginPage {
             alert('err \n'+ JSON.stringify( err ) );
           });
       });
-    }).catch(err => alert( JSON.stringify( err ) ) );;
+    }).catch(err => alert( JSON.stringify( err ) ) );
   }
 
   loginGoogle(){
     if (this.platform.is('cordova')) {
-      this.loading.present().then((res) => {;
+      this.loading.present().then((res) => {
         this.nativeGoogleLogin();
       });
     } else {
@@ -128,8 +133,6 @@ export class LoginPage {
   }
   async nativeGoogleLogin(): Promise<void> {
     try {
-     //let webClientId  = '563076778504-8idldes7n7cb250siu9a9ic0ssaruq65.apps.googleusercontent.com';
-     //let webClientId2 = '563076778504-dc8gj2on3ce71klc2u362j07b7bk1796.apps.googleusercontent.com';
      let webClientId3 = '563076778504-jv6mkamq5do9fohulgkpjtu7i7nouqpp.apps.googleusercontent.com';
       //const gplusUser = await 
       this.googlePlus.login({
@@ -138,22 +141,20 @@ export class LoginPage {
         'scopes': 'profile email'
       }).then(gplusUser => {
           console.log('gplus user = ', gplusUser );
-          //return await 
           let gResult = this.afAuth.auth.signInWithCredential(firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken));
-          console.log('google result = ', gResult );
-          this.userData = gResult;
-
+          this.sendData( gplusUser );     
       }).catch((err) => {
         console.log('native catch error is ', err);
         this.loading.dismiss();
-        alert('Error!! Cannot login this. Please try again for other login.');  
+        alert('Error !! Cannot login this. Please try again for other login.');  
         this.gStatus = err;
+        this.userData = 'catch error ' + JSON.stringify( err );
       });
   
     } catch(err) {
       console.log('try error is ', err);
       this.loading.dismiss();
-      alert('Error!! Cannot login this. Please try again for other login.');
+      alert('Errors!! Cannot login this. Please try again for other login.');
       //this.navCtrl.setRoot(LoginPage);
       this.gStatus = err;
    }
