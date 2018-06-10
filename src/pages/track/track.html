@@ -22,7 +22,7 @@
     <ion-card-header (click)="viewOrder(order.id)">
         <ion-icon name="ios-cart-outline"></ion-icon> Order No. #{{ order.code }}
         <p><small>{{ order.created_at | date:'dd MMM yyyy HH:mm' }}</small></p>
-        <ion-badge color="dark">{{ order.status }}</ion-badge>
+        <ion-badge color="dark">{{ order.status_name }}</ion-badge>
     </ion-card-header>
     <ion-card-content *ngIf="order.tracking.length > 0">
       <h4>TRACKING STATUS</h4>
@@ -37,8 +37,8 @@
                 <button ion-button color="dark" (click)="doConfirmation(order.id)" full >แจ้งชำระเงิน</button>
               </p>
             </ion-col>
-            <ion-col col-12 class="attach-panel" *ngIf="track.attach" >
-              <p><strong>Attach File</strong></p>
+            <ion-col col-12 class="attach-panel" *ngIf="track.attach.attach_img">
+              <p><strong>Attach File {{ track.attach.attach_img }}</strong></p>
               <p><img src="{{ track.attach.attach_img }}" /></p>
             </ion-col>
           </ion-row>
